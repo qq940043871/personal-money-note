@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名人传记 - 投资交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chapter-title {
+            scroll-margin-top: 80px;
+        }
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">名人传记：退学炒股的悟道之路</h1>
+            <p class="text-gray-600">一位年轻投资者从校园走向股市的心路历程与成功之道</p>
+        </div>
+
+        <!-- 目录导航 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-list-ul text-primary mr-2"></i>
+                内容目录
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#chapter1" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">1</span>
+                        </div>
+                        <span class="text-gray-700">初入股市</span>
+                    </div>
+                </a>
+                <a href="#chapter2" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">2</span>
+                        </div>
+                        <span class="text-gray-700">挫折与反思</span>
+                    </div>
+                </a>
+                <a href="#chapter3" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">3</span>
+                        </div>
+                        <span class="text-gray-700">退学决定</span>
+                    </div>
+                </a>
+                <a href="#chapter4" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">4</span>
+                        </div>
+                        <span class="text-gray-700">悟道之路</span>
+                    </div>
+                </a>
+                <a href="#chapter5" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">5</span>
+                        </div>
+                        <span class="text-gray-700">成功之道</span>
+                    </div>
+                </a>
+                <a href="#chapter6" class="border rounded-lg p-3 hover:bg-blue-50 hover:border-primary transition-colors">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold">6</span>
+                        </div>
+                        <span class="text-gray-700">经验总结</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 传记内容 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <!-- 第一章 -->
+            <div id="chapter1" class="chapter-title mb-8 pb-8 border-b">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-book-reader text-primary mr-3"></i>
+                    第一章：初入股市
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">故事开始于2015年，当时我还是某重点大学计算机专业的大二学生。和其他同学一样，每天穿梭在教室、图书馆和宿舍之间，按部就班地完成学业任务。然而，一次偶然的机会，我在网上看到了关于股市的新闻报道，那些红红绿绿的K线图深深吸引了我。</p>
+                    
+                    <p class="mb-4">起初，我只是抱着好奇的心态观察股市动态，但很快就被其中蕴含的巨大机遇所吸引。我用积攒的生活费开了一个股票账户，开始了我的投资之旅。最初的几个月里，凭借着对技术分析的一些粗浅理解，我在股市中小有收获，这让我信心大增。</p>
+                    
+                    <p class="mb-4">那时候的我认为自己找到了人生的真正方向，甚至开始幻想早日实现财务自由。我花费大量时间研究各种技术指标，阅读财经新闻，试图从中捕捉市场动向。这种热情让我在课堂上经常心不在焉，成绩也开始下滑。</p>
+                </div>
+            </div>
+
+            <!-- 第二章 -->
+            <div id="chapter2" class="chapter-title mb-8 pb-8 border-b">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i>
+                    第二章：挫折与反思
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">好景不长，随着2015年股灾的到来，我的账户遭受了重创。由于缺乏风险意识和资金管理能力，我在高位买入的股票一路下跌，损失惨重。那段时间，我几乎每天都盯着屏幕看盘，心情随着股价起伏而波动，严重影响了正常的学习和生活。</p>
+                    
+                    <p class="mb-4">面对巨额亏损，我陷入了深深的自我怀疑中。家人和朋友都劝我专心学业，不要再沉迷于股市。但我并没有听进去，反而认为他们不理解我追求财富的梦想。为了回本，我甚至动用了学费和生活费，这让我的处境变得更加困难。</p>
+                    
+                    <p class="mb-4">连续几次的投资失败让我开始认真反思自己的行为。我意识到，要想在股市中获得成功，仅仅依靠技术分析是远远不够的，还需要扎实的金融知识、深刻的人性洞察以及严格的纪律约束。而这些，正是我在大学里无法系统学习到的。</p>
+                </div>
+            </div>
+
+            <!-- 第三章 -->
+            <div id="chapter3" class="chapter-title mb-8 pb-8 border-b">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-user-graduate text-red-500 mr-3"></i>
+                    第三章：退学决定
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">经过深思熟虑，我在大三结束时做出了一个令所有人震惊的决定——退学。这个决定遭到了家人和老师的强烈反对，他们认为我是在拿前途开玩笑。但当时的我坚信，只有全身心投入到股市中，才能真正领悟其中的奥秘。</p>
+                    
+                    <p class="mb-4">退学后的日子并不轻松。没有了稳定的经济来源，我只能靠之前积累的资金维持生活。我把所有的时间都投入到学习投资知识上，每天阅读大量的财经书籍，研究各种投资大师的理念和方法。同时，我也开始尝试不同的交易策略，在实践中不断总结经验教训。</p>
+                    
+                    <p class="mb-4">那段时期是我人生中最艰难也最充实的时光。我没有周末和节假日的概念，每天都在思考如何提高自己的投资水平。虽然物质生活相对清贫，但精神上却感到前所未有的满足。</p>
+                </div>
+            </div>
+
+            <!-- 第四章 -->
+            <div id="chapter4" class="chapter-title mb-8 pb-8 border-b">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-lightbulb text-accent mr-3"></i>
+                    第四章：悟道之路
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">真正的转折点出现在2018年。通过对市场的深入观察和多年实践的积累，我逐渐形成了自己独特的投资理念。我发现，成功的投资不仅仅在于技术分析或基本面研究，更重要的是要理解人性、把握趋势、控制风险。</p>
+                    
+                    <p class="mb-4">我开始关注宏观经济环境对企业经营的影响，学会了从产业发展的角度分析投资机会。同时，我也深刻认识到情绪管理的重要性，不再被短期波动所左右，而是专注于长期价值创造。</p>
+                    
+                    <p class="mb-4">在这一阶段，我的投资风格发生了根本性转变。我不再频繁交易，而是耐心等待最佳时机；我不再盲目追涨杀跌，而是坚持价值投资原则；我不再情绪化操作，而是严格执行交易纪律。这些改变让我的投资业绩稳步提升。</p>
+                </div>
+            </div>
+
+            <!-- 第五章 -->
+            <div id="chapter5" class="chapter-title mb-8 pb-8 border-b">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-trophy text-yellow-500 mr-3"></i>
+                    第五章：成功之道
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">到2020年，我已经建立了一套完整的投资体系，并取得了令人瞩目的成绩。我的投资组合年化收益率超过30%，远超市场平均水平。更重要的是，我学会了如何在不同市场环境下保持稳健增长。</p>
+                    
+                    <p class="mb-4">我的成功并非偶然，而是基于以下几个核心原则：</p>
+                    
+                    <ol class="list-decimal pl-6 mb-4 space-y-2">
+                        <li><strong>深度研究：</strong>在买入任何股票之前，我都会对其所在行业、公司基本面、竞争优势等进行全面分析。</li>
+                        <li><strong>风险控制：</strong>我始终坚持不超过总资产5%的资金投入单一标的，并设置严格的止损线。</li>
+                        <li><strong>长期视角：</strong>我更关注企业的长期成长潜力，而非短期价格波动。</li>
+                        <li><strong>持续学习：</strong>我每天都会花时间阅读研究报告、财经新闻，不断提升自己的认知水平。</li>
+                        <li><strong>情绪管理：</strong>我建立了完善的交易日志系统，定期回顾和总结，避免重复犯错。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 第六章 -->
+            <div id="chapter6" class="chapter-title">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-book text-secondary mr-3"></i>
+                    第六章：经验总结
+                </h2>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">回顾这段特殊的经历，我想分享几点感悟给正在投资路上探索的朋友：</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="mb-2"><strong>1. 教育的价值：</strong>虽然我选择了退学，但这并不意味着否定教育的意义。正规教育提供了系统的知识框架和思维方式，这些都是宝贵的财富。即使在投资领域，我也从未停止过学习。</p>
+                    </div>
+                    
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                        <p class="mb-2"><strong>2. 实践的重要性：</strong>纸上得来终觉浅，绝知此事要躬行。投资是一门实践性很强的学科，只有通过不断的实际操作，才能真正掌握其中的精髓。</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="mb-2"><strong>3. 心态的修炼：</strong>投资本质上是对人性的考验。贪婪与恐惧、自信与自卑、希望与绝望，这些情绪时刻伴随着我们。学会控制情绪，保持理性思考，是成功的关键。</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-4">
+                        <p class="mb-2"><strong>4. 风险意识：</strong>永远不要把所有鸡蛋放在一个篮子里。合理的资产配置和严格的风险控制是保护本金安全的重要手段。</p>
+                    </div>
+                    
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4">
+                        <p class="mb-2"><strong>5. 坚持的力量：</strong>投资不是一夜暴富的游戏，而是需要长期坚持的过程。只有耐得住寂寞，守得住繁华，才能最终获得成功。</p>
+                    </div>
+                    
+                    <p class="mt-6">每个人的人生道路都是独特的，我的选择未必适合所有人。但我希望通过分享这段经历，能够给大家带来一些启发和思考。无论你选择什么样的道路，都要记住：成功没有捷径，唯有脚踏实地、不断学习、勇于实践，才能在各自的领域取得成就。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 时间线 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-history text-primary mr-3"></i>
+                关键时间节点
+            </h2>
+            
+            <div class="relative">
+                <!-- 时间线轴 -->
+                <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                
+                <!-- 时间节点 -->
+                <div class="relative pl-12 pb-8 timeline-item">
+                    <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                        <i class="fas fa-calendar text-white"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">2015年</h3>
+                        <p class="text-gray-600">初入股市，小有收获</p>
+                    </div>
+                </div>
+                
+                <div class="relative pl-12 pb-8 timeline-item">
+                    <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
+                        <i class="fas fa-exclamation-circle text-white"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">2015年下半年</h3>
+                        <p class="text-gray-600">遭遇股灾，损失惨重</p>
+                    </div>
+                </div>
+                
+                <div class="relative pl-12 pb-8 timeline-item">
+                    <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-red-500 flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-white"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">2016年</h3>
+                        <p class="text-gray-600">做出退学决定，全身心投入投资学习</p>
+                    </div>
+                </div>
+                
+                <div class="relative pl-12 pb-8 timeline-item">
+                    <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-white"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">2018年</h3>
+                        <p class="text-gray-600">形成独特投资理念，实现稳定盈利</p>
+                    </div>
+                </div>
+                
+                <div class="relative pl-12 pb-8 timeline-item">
+                    <div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                        <i class="fas fa-trophy text-white"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-bold text-gray-800 mb-1">2020年至今</h3>
+                        <p class="text-gray-600">建立完整投资体系，年化收益率超30%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

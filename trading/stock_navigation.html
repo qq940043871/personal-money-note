@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股海导航 - 投资交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #3B82F6;
+        }
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .category-title {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .category-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">股海导航</h1>
+            <p class="text-gray-600">投资股票必备的网站、政策新闻、宏观经济数据和大盘行情一站式导航</p>
+        </div>
+
+        <!-- 导航分类 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- 重要网站 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 category-title">重要网站</h2>
+                
+                <div class="space-y-4">
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-landmark text-blue-500 mr-3"></i>
+                            官方网站
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.sse.com.cn" target="_blank" class="text-blue-500 hover:underline">上海证券交易所</a></h4>
+                                <p class="text-sm text-gray-600">http://www.sse.com.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.szse.cn" target="_blank" class="text-blue-500 hover:underline">深圳证券交易所</a></h4>
+                                <p class="text-sm text-gray-600">http://www.szse.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.csrc.gov.cn" target="_blank" class="text-blue-500 hover:underline">中国证监会</a></h4>
+                                <p class="text-sm text-gray-600">http://www.csrc.gov.cn</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-chart-line text-green-500 mr-3"></i>
+                            数据平台
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://www.10jqka.com.cn" target="_blank" class="text-blue-500 hover:underline">同花顺</a></h4>
+                                <p class="text-sm text-gray-600">https://www.10jqka.com.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://www.eastmoney.com" target="_blank" class="text-blue-500 hover:underline">东方财富</a></h4>
+                                <p class="text-sm text-gray-600">https://www.eastmoney.com</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://xueqiu.com" target="_blank" class="text-blue-500 hover:underline">雪球</a></h4>
+                                <p class="text-sm text-gray-600">https://xueqiu.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 政策新闻 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 category-title">政策新闻</h2>
+                
+                <div class="space-y-4">
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-newspaper text-purple-500 mr-3"></i>
+                            官方媒体
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.xinhuanet.com" target="_blank" class="text-blue-500 hover:underline">新华网</a></h4>
+                                <p class="text-sm text-gray-600">http://www.xinhuanet.com</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.people.com.cn" target="_blank" class="text-blue-500 hover:underline">人民网</a></h4>
+                                <p class="text-sm text-gray-600">http://www.people.com.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.cs.com.cn" target="_blank" class="text-blue-500 hover:underline">中国证券报</a></h4>
+                                <p class="text-sm text-gray-600">http://www.cs.com.cn</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-bullhorn text-yellow-500 mr-3"></i>
+                            政策发布
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.gov.cn/zhengce" target="_blank" class="text-blue-500 hover:underline">国务院政策文件</a></h4>
+                                <p class="text-sm text-gray-600">http://www.gov.cn/zhengce</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.pbc.gov.cn" target="_blank" class="text-blue-500 hover:underline">央行货币政策</a></h4>
+                                <p class="text-sm text-gray-600">http://www.pbc.gov.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.mof.gov.cn" target="_blank" class="text-blue-500 hover:underline">财政部财政政策</a></h4>
+                                <p class="text-sm text-gray-600">http://www.mof.gov.cn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 宏观经济数据 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 category-title">宏观经济数据</h2>
+                
+                <div class="space-y-4">
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-chart-bar text-red-500 mr-3"></i>
+                            国家统计局
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.stats.gov.cn" target="_blank" class="text-blue-500 hover:underline">国民经济核算</a></h4>
+                                <p class="text-sm text-gray-600">http://www.stats.gov.cn</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.stats.gov.cn" target="_blank" class="text-blue-500 hover:underline">价格指数</a></h4>
+                                <p class="text-sm text-gray-600">CPI、PPI等数据</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.stats.gov.cn" target="_blank" class="text-blue-500 hover:underline">工业生产</a></h4>
+                                <p class="text-sm text-gray-600">工业增加值、制造业PMI等</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-coins text-indigo-500 mr-3"></i>
+                            金融数据
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.pbc.gov.cn" target="_blank" class="text-blue-500 hover:underline">货币供应量</a></h4>
+                                <p class="text-sm text-gray-600">M0、M1、M2数据</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.pbc.gov.cn" target="_blank" class="text-blue-500 hover:underline">利率汇率</a></h4>
+                                <p class="text-sm text-gray-600">央行政策利率、人民币汇率</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.pbc.gov.cn" target="_blank" class="text-blue-500 hover:underline">金融市场</a></h4>
+                                <p class="text-sm text-gray-600">股市、债市、期货市场数据</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 大盘行情 -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 category-title">大盘行情</h2>
+                
+                <div class="space-y-4">
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-arrow-trend-up text-teal-500 mr-3"></i>
+                            实时行情
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.sse.com.cn/market/price/trends/index.shtml" target="_blank" class="text-blue-500 hover:underline">上证指数</a></h4>
+                                <p class="text-sm text-gray-600">000001.SH</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.szse.cn/market/trend/index.html" target="_blank" class="text-blue-500 hover:underline">深证成指</a></h4>
+                                <p class="text-sm text-gray-600">399001.SZ</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="http://www.szse.cn/market/trend/index.html" target="_blank" class="text-blue-500 hover:underline">创业板指</a></h4>
+                                <p class="text-sm text-gray-600">399006.SZ</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-card bg-gray-50 rounded-lg p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-table text-orange-500 mr-3"></i>
+                            行业板块
+                        </h3>
+                        <div class="space-y-3">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://www.swsresearch.com/" target="_blank" class="text-blue-500 hover:underline">申万一级行业</a></h4>
+                                <p class="text-sm text-gray-600">28个一级行业分类</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://www.eastmoney.com/" target="_blank" class="text-blue-500 hover:underline">概念板块</a></h4>
+                                <p class="text-sm text-gray-600">热点概念和主题投资</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-1"><a href="https://www.eastmoney.com/" target="_blank" class="text-blue-500 hover:underline">地域板块</a></h4>
+                                <p class="text-sm text-gray-600">按地区划分的上市公司</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使用说明 -->
+        <div class="mt-8 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+            <h2 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                使用说明
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <ul class="space-y-2">
+                    <li>建议收藏本页面，方便快速访问各类投资信息</li>
+                    <li>定期关注政策新闻，及时了解市场动向</li>
+                    <li>结合宏观经济数据，分析市场趋势</li>
+                    <li>通过大盘行情，把握市场节奏</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

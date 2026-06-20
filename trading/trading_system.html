@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .strategy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .step-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .step-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .step-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background-color: #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">散户交易系统</h1>
+            <p class="text-gray-600">10万元资金的小散户如何在股市中生存并获得收益的完整交易体系</p>
+        </div>
+
+        <!-- 资金管理 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6 strategy-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-primary">
+                        <i class="fas fa-wallet text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">初始资金</p>
+                        <p class="text-xl font-bold">10万元</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 strategy-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-accent">
+                        <i class="fas fa-coins text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">单票上限</p>
+                        <p class="text-xl font-bold">2万元</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 strategy-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                        <i class="fas fa-percentage text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">止损比例</p>
+                        <p class="text-xl font-bold">-10%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 strategy-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">目标收益</p>
+                        <p class="text-xl font-bold">20%+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 如何选股 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">如何选股</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">基本面选股法</h3>
+                        <div class="space-y-4">
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">行业选择</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    选择政策支持、发展前景良好的行业，如科技创新、新能源、生物医药等。
+                                </p>
+                            </div>
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">财务分析</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    关注ROE、毛利率、净利率、营收增长率等关键财务指标，选择财务健康的公司。
+                                </p>
+                            </div>
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">估值判断</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    通过PE、PB、PEG等估值指标判断股票是否被低估，寻找安全边际。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">技术面选股法</h3>
+                        <div class="space-y-4">
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">趋势识别</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    选择处于上升趋势的股票，避免下跌趋势中的股票。
+                                </p>
+                            </div>
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">量价配合</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    关注成交量与价格的配合关系，放量上涨、缩量回调为佳。
+                                </p>
+                            </div>
+                            <div class="step-item">
+                                <h4 class="font-bold text-gray-800">技术形态</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    识别经典技术形态，如头肩底、双底、三角形整理等买入信号。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2">选股核心原则：</h3>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>好行业+好公司+好价格 = 好投资</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>宁可错过，不可做错，不追高，不抄底</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>分散投资，单只股票不超过总资金的20%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 买入时机 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">什么时候买入</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="strategy-card border-l-4 border-blue-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">基本面买入信号</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 业绩超预期，发布重大利好消息</li>
+                                <li>• 行业政策支持力度加大</li>
+                                <li>• 公司基本面改善，估值合理</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-card border-l-4 border-green-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">技术面买入信号</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 股价突破重要阻力位或整理平台</li>
+                                <li>• 出现经典买入技术形态</li>
+                                <li>• 回调至重要支撑位获得支撑</li>
+                                <li>• 放量上涨，量价齐升</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-card border-l-4 border-yellow-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">情绪面买入时机</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 市场恐慌情绪释放后的机会</li>
+                                <li>• 利好消息兑现时的回调买入</li>
+                                <li>• 行业轮动到相关板块时</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">什么时候卖出</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="strategy-card border-l-4 border-red-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">止盈卖出信号</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 达到预期目标价位</li>
+                                <li>• 股价严重高估，出现泡沫迹象</li>
+                                <li>• 基本面恶化，业绩不达预期</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-card border-l-4 border-orange-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">止损卖出信号</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 跌破重要支撑位或止损位</li>
+                                <li>• 单只股票亏损超过10%</li>
+                                <li>• 基本面发生重大不利变化</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-card border-l-4 border-purple-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">调仓卖出信号</h3>
+                            <ul class="text-gray-600 text-sm mt-2 space-y-1">
+                                <li>• 发现更好的投资机会</li>
+                                <li>• 行业轮动，需要调整配置</li>
+                                <li>• 资金需求，需要回流现金</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 仓位管理 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">仓位管理</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">应该买多少</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">单只股票</h4>
+                                    <p class="text-gray-600 text-sm">不超过总资金的20%（2万元）</p>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">风险控制</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">单行业</h4>
+                                    <p class="text-gray-600 text-sm">不超过总资金的30%</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">分散投资</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">首次建仓</h4>
+                                    <p class="text-gray-600 text-sm">不超过计划仓位的50%</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">分批买入</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">应该卖多少</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">止盈卖出</h4>
+                                    <p class="text-gray-600 text-sm">达到目标收益后可分批卖出</p>
+                                </div>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">分批止盈</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">止损卖出</h4>
+                                    <p class="text-gray-600 text-sm">亏损10%时坚决止损</p>
+                                </div>
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">严格止损</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">调仓卖出</h4>
+                                    <p class="text-gray-600 text-sm">根据新机会需要灵活调整</p>
+                                </div>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">灵活调仓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2">仓位管理原则：</h3>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>不满仓，保持20-30%现金储备以应对机会</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>分批买入，降低成本和风险</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>分批卖出，不一次性清仓</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 小散户生存策略 -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">小散户生存策略</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">心态管理</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-brain text-blue-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">克服贪婪与恐惧</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        设定合理收益预期，不因短期波动而情绪化操作。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-book-open text-green-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">持续学习</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        不断提升投资知识和分析能力，建立自己的投资体系。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-stopwatch text-yellow-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">耐心等待</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        机会是等出来的，不急于频繁交易。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">操作策略</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-shield-alt text-red-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">严格止损</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        设定并执行止损纪律，控制单笔损失。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-copy text-purple-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">分散投资</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        不把鸡蛋放在一个篮子里，降低非系统性风险。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-chart-bar text-indigo-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium text-gray-800">定期复盘</h4>
+                                    <p class="text-gray-600 text-sm mt-1">
+                                        定期总结交易得失，不断优化交易系统。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2">小散户优势：</h3>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>船小好调头，可以快速进出市场</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>资金量小，更容易找到合适的投资标的</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>决策灵活，不受复杂流程束缚</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 心理建设</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .scenario-card {
+            transition: all 0.3s ease;
+        }
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .solution-step {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        .solution-step:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .step-number {
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">散户投资心理建设</h1>
+            <p class="text-gray-600">应对投资中的常见情绪问题与解决方案</p>
+        </div>
+
+        <!-- 常见投资心理问题 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow scenario-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-red-100 text-danger">
+                            <i class="fas fa-plane-departure text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">卖飞了</h3>
+                            <p class="text-gray-600 text-sm">过早卖出错失大涨</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">股票刚卖出就开始大涨，眼睁睁看着利润流失。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow scenario-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-orange-100 text-warning">
+                            <i class="fas fa-shoe-prints text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">踏空了</h3>
+                            <p class="text-gray-600 text-sm">犹豫不决错过上涨行情</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">因为恐惧或犹豫而没有买入，结果股价一路上涨。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow scenario-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                            <i class="fas fa-anchor text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">深度套牢</h3>
+                            <p class="text-gray-600 text-sm">大幅亏损难以脱身</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">买入后股价持续下跌，账面亏损严重，难以决策。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 解决方案 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">情绪修复方案与步骤</h2>
+                
+                <div class="border-l-4 border-primary pl-4 py-1 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">一、调整心态认知</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">接受市场的不确定性</h4>
+                        <div class="solution-step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">承认无法预测市场走势</p>
+                                <p class="text-gray-600 text-sm mt-1">市场受多种因素影响，没有人能准确预测短期波动。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">理解亏损是投资的一部分</p>
+                                <p class="text-gray-600 text-sm mt-1">任何成功的投资策略都会经历亏损期，关键在于长期收益。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">建立正确预期</h4>
+                        <div class="solution-step">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">设定合理收益率目标</p>
+                                <p class="text-gray-600 text-sm mt-1">年化15%-20%已是优秀表现，避免追求不切实际的高收益。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">4</span>
+                            <div>
+                                <p class="font-medium text-gray-800">关注过程而非单次结果</p>
+                                <p class="text-gray-600 text-sm mt-1">评价投资决策质量应基于逻辑和执行，而非单次盈亏。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-l-4 border-primary pl-4 py-1 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">二、制定应对策略</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">面对卖飞情况</h4>
+                        <div class="solution-step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">回顾卖出理由是否仍然有效</p>
+                                <p class="text-gray-600 text-sm mt-1">如果基本面或技术面未发生改变，可以考虑重新买入。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">设置合理的止盈策略</p>
+                                <p class="text-gray-600 text-sm mt-1">分批减仓或设置移动止盈点，避免完全踏空后续涨幅。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">应对踏空情况</h4>
+                        <div class="solution-step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">等待合适的回调时机</p>
+                                <p class="text-gray-600 text-sm mt-1">不要追高买入，耐心等待技术性回调或盘整阶段。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">采用定投策略分散风险</p>
+                                <p class="text-gray-600 text-sm mt-1">通过定期定额投资来摊平成本，降低择时压力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-l-4 border-primary pl-4 py-1 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">三、建立长期机制</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">完善投资体系</h4>
+                        <div class="solution-step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">严格执行交易计划</p>
+                                <p class="text-gray-600 text-sm mt-1">事先制定明确的买入、卖出条件并坚决执行。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">做好资金管理</p>
+                                <p class="text-gray-600 text-sm mt-1">单只股票投入不超过总资金的10%，分散投资风险。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3">持续学习改进</h4>
+                        <div class="solution-step">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">记录交易日志</p>
+                                <p class="text-gray-600 text-sm mt-1">详细记录每次交易的原因、过程和结果，定期复盘总结。</p>
+                            </div>
+                        </div>
+                        <div class="solution-step">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">提升投资能力</p>
+                                <p class="text-gray-600 text-sm mt-1">通过阅读、实践不断提升对市场的理解和判断力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 总结 -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">总结</h2>
+            <p class="text-gray-700">
+                投资心理建设是一个持续的过程，需要不断实践和完善。面对卖飞、踏空、套牢等情况时，
+                关键是要保持冷静，理性分析，从失败中汲取经验教训，逐步建立起成熟的投资心态和体系。
+                记住：<span class="font-bold">投资是一场马拉松，而不是短跑冲刺</span>。
+            </p>
+        </div>
+    </main>
+</body>
+</html>

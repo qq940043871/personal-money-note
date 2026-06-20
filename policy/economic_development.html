@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 经济发展历程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .timeline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-marker {
+            position: relative;
+        }
+        .timeline-marker::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+            left: -18px;
+            top: 8px;
+            z-index: 1;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: #E5E7EB;
+            left: -13px;
+            top: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">中国经济发展历程</h1>
+            <p class="text-gray-600">回顾新中国成立以来的重要经济发展阶段和里程碑事件</p>
+        </div>
+
+        <!-- 经济发展概览 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-primary">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">GDP总量</p>
+                        <p class="text-xl font-bold">126万亿</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年国内生产总值</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-accent">
+                        <i class="fas fa-building text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">人均GDP</p>
+                        <p class="text-xl font-bold">8.9万</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年中国人均GDP(元)</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                        <i class="fas fa-globe text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">全球排名</p>
+                        <p class="text-xl font-bold">第2位</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">世界第二大经济体</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-history text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">增长倍数</p>
+                        <p class="text-xl font-bold">400+</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">相较于1978年增长倍数</p>
+            </div>
+        </div>
+
+        <!-- 时间线 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">发展历程时间线</h2>
+            </div>
+            <div class="p-6">
+                <div class="relative">
+                    <!-- 时间线连接线 -->
+                    <div class="absolute left-2 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                    
+                    <!-- 1949年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">新中国成立</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">1949年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">中华人民共和国成立，开启了中国历史的新纪元。国民经济恢复时期开始，为后续经济发展奠定基础。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">国民经济恢复</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">计划经济体制</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1953年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">第一个五年计划</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">1953年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">实施第一个五年计划，集中力量发展重工业，建立国家工业化和国防现代化的初步基础。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">工业化起步</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">苏联援助</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1958年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">大跃进运动</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">1958年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">开展"大跃进"运动，试图通过群众运动方式快速实现工业化和农业集体化，但造成了严重的经济和社会问题。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">经济冒进</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">三年困难时期</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1978年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">改革开放</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">1978年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">十一届三中全会召开，决定将工作重点转移到经济建设上，开启了改革开放和社会主义现代化建设新时期。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">经济特区</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">市场经济</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">引进外资</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1992年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">社会主义市场经济体制</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">1992年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">邓小平南方谈话，明确提出建立社会主义市场经济体制目标，推动经济体制改革进入新阶段。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">市场经济</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">深化改革</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2001年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">加入世界贸易组织</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">2001年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">中国正式加入世界贸易组织(WTO)，深度融入全球经济体系，对外贸易进入快速发展阶段。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">全球化</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">对外贸易</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2008年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">应对全球金融危机</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">2008年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">面对国际金融危机冲击，中国政府实施大规模经济刺激计划，保持经济稳定增长。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">4万亿投资</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">经济刺激</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2013年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">一带一路倡议</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">2013年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">提出"一带一路"倡议，推动国际经济合作，促进沿线国家共同发展。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">国际合作</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">基础设施</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2017年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">高质量发展阶段</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">2017年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">党的十九大提出中国经济已由高速增长阶段转向高质量发展阶段，强调创新驱动发展。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">创新驱动</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">供给侧改革</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2020年 -->
+                    <div class="flex timeline-marker mb-8">
+                        <div class="ml-8 flex-1">
+                            <div class="timeline-item bg-white border border-gray-200 rounded-lg p-5">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-lg font-bold text-gray-800">双循环新发展格局</h3>
+                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">2020年</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">面对新冠疫情和国际环境变化，提出构建以国内大循环为主体、国内国际双循环相互促进的新发展格局。</p>
+                                <div class="flex flex-wrap gap-2 mt-3">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">双循环</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">内需驱动</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发展成就 -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">主要发展成就</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-industry text-primary mr-2"></i>
+                            工业体系
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">建立了完整的现代工业体系，制造业规模居世界第一，高铁、5G通信、新能源等领域技术水平世界领先。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>全球唯一拥有全部工业门类的国家</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>制造业增加值占全球比重近30%</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>高铁运营里程超4万公里，居世界第一</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-seedling text-accent mr-2"></i>
+                            农业现代化
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">粮食产量连续多年稳定在1.3万亿斤以上，农业科技进步贡献率超过60%，农业机械化水平大幅提升。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>粮食产量连续8年稳定在1.3万亿斤以上</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>农作物耕种收综合机械化率超72%</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>农业科技进步贡献率超60%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-shopping-cart text-warning mr-2"></i>
+                            消费升级
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">社会消费品零售总额突破40万亿元，消费结构持续优化，服务消费占比不断提升。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>社会消费品零售总额突破40万亿元</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>最终消费支出对经济增长贡献率保持在60%以上</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>网络零售额占社会消费品零售总额比重超30%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-globe text-purple-500 mr-2"></i>
+                            对外开放
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">货物贸易总额居世界第一，实际使用外资规模保持增长，对外投资合作稳步发展。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>货物贸易总额连续多年居世界第一</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>外汇储备规模连续17年居世界第一</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>"一带一路"倡议惠及150多个国家和地区</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

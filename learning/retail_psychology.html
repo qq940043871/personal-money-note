@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 散户心理与股价波动</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .phase-card {
+            transition: all 0.3s ease;
+        }
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .step-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        .step-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .step-number {
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        .psychology-table th {
+            background-color: #EFF6FF;
+        }
+        .psychology-table td, .psychology-table th {
+            padding: 10px;
+            border: 1px solid #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">散户心理与股价波动</h1>
+            <p class="text-gray-600">解析散户心理如何随着股价波动而变化，以及如何落入庄家陷阱</p>
+        </div>
+
+        <!-- 散户心理与股价波动关系 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary">
+                            <i class="fas fa-snowflake text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">深度套牢期</h3>
+                            <p class="text-gray-600 text-sm">绝望与无助</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">不敢看账户，希望反弹解套</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-accent">
+                            <i class="fas fa-seedling text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">底部震荡期</h3>
+                            <p class="text-gray-600 text-sm">犹豫与期待</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">既想抄底又怕继续下跌</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                            <i class="fas fa-rocket text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">上涨初期</h3>
+                            <p class="text-gray-600 text-sm">兴奋与后悔</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">后悔没早买，期待继续上涨</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                            <i class="fas fa-fire text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">疯狂上涨期</h3>
+                            <p class="text-gray-600 text-sm">贪婪与疯狂</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">只想赚更多，不愿卖出</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-red-100 text-danger">
+                            <i class="fas fa-skull text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">顶部派发期</h3>
+                            <p class="text-gray-600 text-sm">恐惧与侥幸</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">既想卖又怕踏空，犹豫不决</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 深度套牢期心理分析 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-snowflake mr-2 text-primary"></i>深度套牢期心理分析
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">心理特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">极度绝望</p>
+                                <p class="text-gray-600 text-sm mt-1">对市场失去信心，不敢看账户盈亏。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">后悔自责</p>
+                                <p class="text-gray-600 text-sm mt-1">后悔买入决策，自责没有研究清楚。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">鸵鸟心态</p>
+                                <p class="text-gray-600 text-sm mt-1">不愿面对现实，希望股价自动反弹。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">典型操作</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">死拿不动</p>
+                                <p class="text-gray-600 text-sm mt-1">亏损严重仍不愿卖出，期待解套。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">盲目补仓</p>
+                                <p class="text-gray-600 text-sm mt-1">希望通过补仓摊低成本，反而加重亏损。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">情绪化交易</p>
+                                <p class="text-gray-600 text-sm mt-1">因情绪波动做出不理智的买卖决策。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部震荡期心理分析 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-seedling mr-2 text-accent"></i>底部震荡期心理分析
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">心理特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">犹豫不决</p>
+                                <p class="text-gray-600 text-sm mt-1">既想抄底又怕继续下跌，难以决策。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">恐惧犹存</p>
+                                <p class="text-gray-600 text-sm mt-1">对前期亏损心有余悸，不敢轻易操作。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">期待反弹</p>
+                                <p class="text-gray-600 text-sm mt-1">希望股价能够反弹，减少亏损或解套。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">典型操作</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">小额试探</p>
+                                <p class="text-gray-600 text-sm mt-1">少量买入试探市场反应，观察走势。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">频繁交易</p>
+                                <p class="text-gray-600 text-sm mt-1">因判断不准而频繁买卖，增加交易成本。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">错失机会</p>
+                                <p class="text-gray-600 text-sm mt-1">因犹豫不决而错过最佳买入时机。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 上涨初期心理分析 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-rocket mr-2 text-warning"></i>上涨初期心理分析
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">心理特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">兴奋激动</p>
+                                <p class="text-gray-600 text-sm mt-1">看到账户盈利，心情愉悦，充满期待。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">后悔情绪</p>
+                                <p class="text-gray-600 text-sm mt-1">后悔没有在更低位置买入，错失更多利润。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">信心恢复</p>
+                                <p class="text-gray-600 text-sm mt-1">对市场重新建立信心，愿意继续投资。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">典型操作</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">加仓操作</p>
+                                <p class="text-gray-600 text-sm mt-1">看到上涨趋势后追加资金买入。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">过早卖出</p>
+                                <p class="text-gray-600 text-sm mt-1">小幅盈利就急于卖出，错失更大收益。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">盲目乐观</p>
+                                <p class="text-gray-600 text-sm mt-1">认为股价会一直上涨，忽视风险。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 疯狂上涨期心理分析 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-fire mr-2 text-orange-600"></i>疯狂上涨期心理分析
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">心理特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">极度贪婪</p>
+                                <p class="text-gray-600 text-sm mt-1">希望赚取更多利润，不愿卖出股票。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">盲目自信</p>
+                                <p class="text-gray-600 text-sm mt-1">认为自己是股神，能够精准把握买卖点。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">从众心理</p>
+                                <p class="text-gray-600 text-sm mt-1">看到别人都在赚钱，盲目跟风买入。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">典型操作</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">重仓操作</p>
+                                <p class="text-gray-600 text-sm mt-1">将大部分资金投入股市，风险集中。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">追高买入</p>
+                                <p class="text-gray-600 text-sm mt-1">不顾价格高位继续买入，增加风险。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">频繁操作</p>
+                                <p class="text-gray-600 text-sm mt-1">频繁买卖，试图抓住每一个波动。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 顶部派发期心理分析 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-skull mr-2 text-danger"></i>顶部派发期心理分析
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">心理特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">恐惧心理</p>
+                                <p class="text-gray-600 text-sm mt-1">担心利润回吐，害怕再次套牢。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">侥幸心理</p>
+                                <p class="text-gray-600 text-sm mt-1">认为股价还会继续上涨，不愿卖出。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">犹豫不决</p>
+                                <p class="text-gray-600 text-sm mt-1">既想卖出获利又怕踏空，难以决策。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">典型操作</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">错失卖出良机</p>
+                                <p class="text-gray-600 text-sm mt-1">因犹豫不决而错过最佳卖出时机。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">恐慌性抛售</p>
+                                <p class="text-gray-600 text-sm mt-1">股价开始下跌后恐慌性卖出，低位割肉。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">高位接盘</p>
+                                <p class="text-gray-600 text-sm mt-1">在高位追涨买入，成为庄家接盘侠。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 散户心理与庄家陷阱 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">散户心理如何落入庄家陷阱</h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="psychology-table w-full">
+                        <thead>
+                            <tr>
+                                <th class="text-left">庄家操作</th>
+                                <th class="text-left">散户心理</th>
+                                <th class="text-left">陷阱机制</th>
+                                <th class="text-left">应对策略</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>打压吸筹</td>
+                                <td>恐慌割肉</td>
+                                <td>制造恐慌氛围，迫使散户低价交出筹码</td>
+                                <td>坚持价值投资，不被短期波动影响</td>
+                            </tr>
+                            <tr>
+                                <td>横盘洗盘</td>
+                                <td>失去耐心</td>
+                                <td>长时间震荡消磨散户持股信心</td>
+                                <td>制定持股计划，避免情绪化操作</td>
+                            </tr>
+                            <tr>
+                                <td>拉高出货</td>
+                                <td>贪婪追高</td>
+                                <td>制造赚钱效应吸引散户高位接盘</td>
+                                <td>理性分析估值，不盲目追涨</td>
+                            </tr>
+                            <tr>
+                                <td>假突破</td>
+                                <td>侥幸心理</td>
+                                <td>制造突破假象诱使散户追涨</td>
+                                <td>确认突破有效性再行动</td>
+                            </tr>
+                            <tr>
+                                <td>对倒诱多</td>
+                                <td>从众效应</td>
+                                <td>自买自卖制造虚假繁荣</td>
+                                <td>关注成交量真实性，独立思考</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 总结 -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">总结</h2>
+            <p class="text-gray-700">
+                散户心理与股价波动密切相关，不同阶段的心理状态直接影响投资决策。
+                庄家正是利用散户的这些心理弱点设置陷阱，实现收割目的。
+                作为散户投资者，需要：
+                <span class="font-bold">认识自身心理弱点，制定理性投资计划，坚持长期价值投资</span>，
+                不被短期波动和市场情绪左右，才能在股市中长期生存并获得收益。
+            </p>
+        </div>
+    </main>
+</body>
+</html>

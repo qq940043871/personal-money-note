@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 财报披露规则</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .disclosure-card {
+            transition: all 0.3s ease;
+        }
+        .disclosure-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .disclosure-section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800 flex items-center">
+                <i class="fas fa-file-contract text-primary mr-3"></i>
+                财报披露规则
+            </h1>
+            <p class="text-gray-600">了解上市公司财务信息披露的相关规定和要求，帮助投资者获取准确的投资信息</p>
+        </div>
+
+        <!-- 目录导航 -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-3">目录</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <a href="#disclosure-timelines" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    披露时间要求
+                </a>
+                <a href="#periodic-reports" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    定期报告
+                </a>
+                <a href="#interim-reports" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-bolt mr-2"></i>
+                    临时报告
+                </a>
+                <a href="#pre-disclosure" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-hourglass-half mr-2"></i>
+                    预披露制度
+                </a>
+                <a href="#disclosure-content" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-file-alt mr-2"></i>
+                    披露内容要求
+                </a>
+                <a href="#regulatory-responsibilities" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-gavel mr-2"></i>
+                    监管责任
+                </a>
+            </div>
+        </div>
+
+        <!-- 披露时间要求 -->
+        <div id="disclosure-timelines" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-clock text-primary mr-3"></i>
+                披露时间要求
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                    <h3 class="font-semibold text-gray-800">年度报告</h3>
+                    <p class="text-gray-600 mt-2">应当在每个会计年度结束之日起4个月内编制并披露。</p>
+                </div>
+                <div class="disclosure-card bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                    <h3 class="font-semibold text-gray-800">中期报告</h3>
+                    <p class="text-gray-600 mt-2">应当在每个会计年度的上半年结束之日起2个月内编制并披露。</p>
+                </div>
+                <div class="disclosure-card bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                    <h3 class="font-semibold text-gray-800">季度报告</h3>
+                    <p class="text-gray-600 mt-2">应当在每个会计年度第3个月、第9个月结束后的1个月内编制并披露。</p>
+                </div>
+                <div class="disclosure-card bg-blue-50 p-4 rounded-lg border-l-4 border-primary">
+                    <h3 class="font-semibold text-gray-800">业绩预告</h3>
+                    <p class="text-gray-600 mt-2">年度报告或中期报告披露前如出现净利润大幅波动等情况，应及时发布业绩预告。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 定期报告 -->
+        <div id="periodic-reports" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-calendar-alt text-accent mr-3"></i>
+                定期报告要求
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-green-50 p-4 rounded-lg border-l-4 border-accent">
+                    <h3 class="font-semibold text-gray-800">年度报告主要内容</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>公司基本情况</li>
+                        <li>主要财务数据和股东变化</li>
+                        <li>董事、监事、高级管理人员情况</li>
+                        <li>公司治理结构</li>
+                        <li>董事会报告</li>
+                        <li>监事会报告</li>
+                        <li>重要事项</li>
+                        <li>财务报告</li>
+                    </ul>
+                </div>
+                <div class="disclosure-card bg-green-50 p-4 rounded-lg border-l-4 border-accent">
+                    <h3 class="font-semibold text-gray-800">中期报告主要内容</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>公司基本情况</li>
+                        <li>主要财务数据和股东变化</li>
+                        <li>管理层讨论与分析</li>
+                        <li>重要事项</li>
+                        <li>财务报告</li>
+                    </ul>
+                </div>
+                <div class="disclosure-card bg-green-50 p-4 rounded-lg border-l-4 border-accent">
+                    <h3 class="font-semibold text-gray-800">季度报告主要内容</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>公司基本情况</li>
+                        <li>主要财务数据</li>
+                        <li>重要事项</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 临时报告 -->
+        <div id="interim-reports" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-bolt text-warning mr-3"></i>
+                临时报告要求
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-yellow-50 p-4 rounded-lg border-l-4 border-warning">
+                    <h3 class="font-semibold text-gray-800">重大事件披露</h3>
+                    <p class="text-gray-600 mt-2">发生可能对公司证券及其衍生品种交易价格产生较大影响的重大事件，投资者尚未得知时，公司应当立即披露，说明事件的起因、目前的状态和可能产生的影响。</p>
+                    <div class="mt-3 p-3 bg-white rounded border">
+                        <h4 class="font-medium text-gray-800">重大事件包括但不限于：</h4>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>公司的经营方针和经营范围的重大变化</li>
+                            <li>公司的重大投资行为和重大的购置财产的决定</li>
+                            <li>公司订立重要合同，可能对公司的资产、负债、权益和经营成果产生重要影响</li>
+                            <li>公司发生重大债务和未能清偿到期重大债务的违约情况</li>
+                            <li>公司发生重大亏损或者重大损失</li>
+                            <li>公司生产经营的外部条件发生的重大变化</li>
+                            <li>公司的董事、1/3以上监事或者经理发生变动</li>
+                            <li>持有公司5%以上股份的股东或者实际控制人，其持有股份或者控制公司的情况发生较大变化</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="disclosure-card bg-yellow-50 p-4 rounded-lg border-l-4 border-warning">
+                    <h3 class="font-semibold text-gray-800">关联交易披露</h3>
+                    <p class="text-gray-600 mt-2">公司与关联人发生的交易（公司获赠现金资产和提供担保除外）金额在3000万元以上，且占公司最近一期经审计净资产绝对值5%以上的关联交易，应当及时披露。</p>
+                </div>
+                <div class="disclosure-card bg-yellow-50 p-4 rounded-lg border-l-4 border-warning">
+                    <h3 class="font-semibold text-gray-800">对外担保披露</h3>
+                    <p class="text-gray-600 mt-2">公司及其控股子公司对外担保总额超过公司最近一期经审计净资产50%以后提供的任何担保，应当及时披露。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 预披露制度 -->
+        <div id="pre-disclosure" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-hourglass-half text-danger mr-3"></i>
+                预披露制度
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-red-50 p-4 rounded-lg border-l-4 border-danger">
+                    <h3 class="font-semibold text-gray-800">业绩预告</h3>
+                    <p class="text-gray-600 mt-2">当公司预计年度经营业绩将出现下列情形之一时，应当在会计年度结束后1个月内进行业绩预告：</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>净利润为负值</li>
+                        <li>净利润与上年同期相比上升或者下降50%以上</li>
+                        <li>实现扭亏为盈</li>
+                    </ul>
+                </div>
+                <div class="disclosure-card bg-red-50 p-4 rounded-lg border-l-4 border-danger">
+                    <h3 class="font-semibold text-gray-800">业绩快报</h3>
+                    <p class="text-gray-600 mt-2">如果公司已经发布业绩预告，但预计不能在规定期限内披露年度报告，应当在规定期限届满前发布业绩快报。</p>
+                </div>
+                <div class="disclosure-card bg-red-50 p-4 rounded-lg border-l-4 border-danger">
+                    <h3 class="font-semibold text-gray-800">重大事项预披露</h3>
+                    <p class="text-gray-600 mt-2">对于涉及重大资产重组、收购兼并等事项，在相关方案确定后、正式公告前，可根据需要进行预披露，以避免信息泄露对市场造成重大影响。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 披露内容要求 -->
+        <div id="disclosure-content" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-file-alt text-purple-500 mr-3"></i>
+                披露内容要求
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">真实性原则</h3>
+                    <p class="text-gray-600 mt-2">信息披露义务人应当保证所披露信息的真实、准确、完整，简明清晰，通俗易懂，不得有虚假记载、误导性陈述或者重大遗漏。</p>
+                </div>
+                <div class="disclosure-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">公平性原则</h3>
+                    <p class="text-gray-600 mt-2">信息披露义务人应当同时向所有投资者公开披露信息，不得提前向特定对象单独披露、透露或者泄露。</p>
+                </div>
+                <div class="disclosure-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">及时性原则</h3>
+                    <p class="text-gray-600 mt-2">信息披露义务人应当在规定的时间内披露信息，不得延迟披露。</p>
+                </div>
+                <div class="disclosure-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">准确性原则</h3>
+                    <p class="text-gray-600 mt-2">使用明确、充分、具体的语言，避免使用夸大、模糊或宣传性的措辞。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 监管责任 -->
+        <div id="regulatory-responsibilities" class="disclosure-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-gavel text-indigo-500 mr-3"></i>
+                违规责任与监管措施
+            </h2>
+            <div class="space-y-4">
+                <div class="disclosure-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">行政监管措施</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>责令改正</li>
+                        <li>监管谈话</li>
+                        <li>出具警示函</li>
+                        <li>责令公开说明</li>
+                        <li>责令定期报告</li>
+                        <li>限制交易</li>
+                    </ul>
+                </div>
+                <div class="disclosure-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">纪律处分</h3>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>通报批评</li>
+                        <li>公开谴责</li>
+                    </ul>
+                </div>
+                <div class="disclosure-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">法律责任</h3>
+                    <p class="text-gray-600 mt-2">信息披露义务人违反相关法律法规的，将依法承担相应的民事、行政或刑事责任。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

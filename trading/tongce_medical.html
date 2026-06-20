@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 通策医疗分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .analysis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .metric-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .metric-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">个股分析 - 通策医疗 (600763)</h1>
+            <p class="text-gray-600">基于8个维度的全面个股分析</p>
+        </div>
+
+        <!-- 股价信息 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6 analysis-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-primary">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">当前股价</p>
+                        <p class="text-xl font-bold">128.50元</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 analysis-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-accent">
+                        <i class="fas fa-percentage text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">涨跌幅</p>
+                        <p class="text-xl font-bold">-1.23%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 analysis-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                        <i class="fas fa-chart-bar text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">成交量</p>
+                        <p class="text-xl font-bold">3.8万手</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 analysis-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-coins text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">市值</p>
+                        <p class="text-xl font-bold">410.2亿元</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 技术面分析 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">技术面分析</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">股价走势分析</h3>
+                        <div class="space-y-4">
+                            <div class="metric-item">
+                                <h4 class="font-bold text-gray-800">短期趋势</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    股价近期呈现震荡调整态势，在130元附近遇阻回落，技术面偏弱。
+                                </p>
+                            </div>
+                            <div class="metric-item">
+                                <h4 class="font-bold text-gray-800">支撑阻力</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    当前价位上方阻力位在132元，下方支撑位在125元。
+                                </p>
+                            </div>
+                            <div class="metric-item">
+                                <h4 class="font-bold text-gray-800">量价关系</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    近期成交量有所萎缩，量价配合一般，显示资金观望情绪较浓。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">技术指标</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">MACD</h4>
+                                    <p class="text-gray-600 text-sm">死叉向下，空头排列</p>
+                                </div>
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">看空</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">RSI</h4>
+                                    <p class="text-gray-600 text-sm">45，处于中性区域</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">中性</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">均线系统</h4>
+                                    <p class="text-gray-600 text-sm">股价在各周期均线下方运行</p>
+                                </div>
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">看空</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 最近一个月趋势图 -->
+                <div class="mt-6">
+                    <h3 class="font-medium text-gray-800 mb-4">最近一个月股价与成交量趋势</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="h-48 flex items-end justify-between space-x-2">
+                            <!-- 模拟股价趋势图 -->
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t" style="height: 60%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月8日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t" style="height: 70%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月15日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t" style="height: 80%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月22日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t" style="height: 75%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月29日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-blue-500 to-blue-300 rounded-t" style="height: 65%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">11月5日</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center text-sm text-gray-600">
+                            <p>股价趋势：从月初的135元左右震荡下行至目前的128元左右</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 bg-gray-50 p-4 rounded-lg">
+                        <div class="h-32 flex items-end justify-between space-x-2">
+                            <!-- 模拟成交量趋势图 -->
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t" style="height: 70%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月8日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t" style="height: 60%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月15日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t" style="height: 50%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月22日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t" style="height: 40%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">10月29日</div>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="w-full bg-gradient-to-t from-green-500 to-green-300 rounded-t" style="height: 35%;"></div>
+                                <div class="text-xs text-gray-500 mt-1">11月5日</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center text-sm text-gray-600">
+                            <p>成交量趋势：从月初的5万手左右逐步萎缩至目前的3.8万手</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 基本面分析 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">行业市场分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="analysis-card border-l-4 border-blue-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">行业前景</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                口腔医疗服务行业受益于消费升级和健康意识提升，市场需求持续增长。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-green-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">市场规模</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                中国口腔医疗服务市场规模超千亿，年增长率保持在15%以上。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-yellow-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">竞争格局</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                行业集中度较低，民营医疗机构占主导地位，连锁化经营是发展趋势。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">商业模式分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="analysis-card border-l-4 border-red-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">核心业务</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                提供口腔医疗服务，涵盖种植牙、正畸、修复等全方位口腔诊疗项目。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-purple-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">盈利模式</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                以诊疗服务收费为主，通过连锁化经营实现规模化盈利。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-indigo-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">渠道布局</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                以浙江省为核心，辐射全国多个省市，已建立多家口腔医院和门诊部。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">竞争优势分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">品牌优势</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                通策医疗作为国内知名口腔医疗服务品牌，具有较强的品牌影响力和市场认知度。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">医生资源</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                拥有一支高水平的专业医生团队，汇聚了众多国内外知名口腔医学专家。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">管理模式</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                创新性的"总院+分院"模式，有效复制成功经验，提升运营效率。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">技术实力</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                在种植牙、正畸等高端口腔医疗技术方面处于行业领先地位。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">增长策略分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">区域扩张</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                继续深化浙江省内布局，同时加快向其他省市扩张的步伐。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">业务拓展</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                积极拓展儿科口腔、老年口腔等细分市场，丰富服务内容。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">技术创新</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                加大研发投入，引进先进设备和技术，提升诊疗水平和服务质量。
+                            </p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-bold text-gray-800">人才培养</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                加强与高等院校合作，建立完善的人才培养和引进机制。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">管理文化分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="analysis-card border-l-4 border-teal-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">管理团队</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                核心管理团队具备丰富的医疗行业经验和企业管理能力。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-orange-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">企业文化</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                倡导"以患者为中心、以质量为核心、以创新为动力"的企业价值观。
+                            </p>
+                        </div>
+                        <div class="analysis-card border-l-4 border-pink-500 pl-4 py-1">
+                            <h3 class="font-bold text-gray-800">治理结构</h3>
+                            <p class="text-gray-600 text-sm mt-1">
+                                公司治理结构完善，内部控制制度健全，信息披露规范。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">公司估值分析</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-800">市盈率(PE)</h4>
+                                <p class="text-gray-600 text-sm">85倍</p>
+                            </div>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">行业平均60倍</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-800">市净率(PB)</h4>
+                                <p class="text-gray-600 text-sm">12.5倍</p>
+                            </div>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">行业平均8倍</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <h4 class="font-medium text-gray-800">PEG</h4>
+                                <p class="text-gray-600 text-sm">1.8</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">偏高</span>
+                        </div>
+                        <div class="p-3 bg-yellow-50 rounded-lg">
+                            <h4 class="font-medium text-gray-800">估值结论</h4>
+                            <p class="text-gray-600 text-sm mt-1">
+                                相比行业平均水平，公司估值偏高，存在一定的估值风险。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 投资风险分析 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">投资风险分析</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">主要风险</h3>
+                        <div class="space-y-3">
+                            <div class="border-l-4 border-red-500 pl-4 py-1">
+                                <h4 class="font-medium">政策风险</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    医疗行业政策变化可能对公司经营产生影响。
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-orange-500 pl-4 py-1">
+                                <h4 class="font-medium">竞争风险</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    行业竞争加剧可能导致市场份额下降和利润率压缩。
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-yellow-500 pl-4 py-1">
+                                <h4 class="font-medium">扩张风险</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    快速扩张带来的管理风险和资金压力。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800 mb-4">应对措施</h3>
+                        <div class="space-y-3">
+                            <div class="border-l-4 border-green-500 pl-4 py-1">
+                                <h4 class="font-medium">合规经营</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    严格遵守行业法规，积极应对政策变化。
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-blue-500 pl-4 py-1">
+                                <h4 class="font-medium">差异化竞争</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    强化品牌优势和技术特色，提升核心竞争力。
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-4 py-1">
+                                <h4 class="font-medium">稳健扩张</h4>
+                                <p class="text-gray-600 text-sm mt-1">
+                                    合理控制扩张节奏，加强资金管理和风险控制。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2">风险提示：</h3>
+                    <ul class="text-gray-600 text-sm space-y-1">
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>投资有风险，入市需谨慎，以上分析仅供参考</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>股价受多种因素影响，历史表现不代表未来收益</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-yellow-500 mt-1 mr-2"></i>
+                            <span>建议结合自身风险承受能力做出投资决策</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 投资建议 -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">投资建议</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center p-5 border border-gray-200 rounded-lg">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-lightbulb text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">关注点</h3>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li>• 行业景气度持续提升</li>
+                            <li>• 公司品牌优势明显</li>
+                            <li>• 连锁化经营模式成熟</li>
+                        </ul>
+                    </div>
+                    <div class="text-center p-5 border border-gray-200 rounded-lg">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">积极因素</h3>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li>• 盈利能力较强</li>
+                            <li>• 成长性良好</li>
+                            <li>• 管理团队经验丰富</li>
+                        </ul>
+                    </div>
+                    <div class="text-center p-5 border border-gray-200 rounded-lg">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800 mb-2">注意事项</h3>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li>• 估值水平偏高</li>
+                            <li>• 关注政策变化风险</li>
+                            <li>• 留意行业竞争加剧</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="font-bold text-gray-800 mb-2">综合评价：</h3>
+                    <p class="text-gray-600 text-sm">
+                        通策医疗作为国内口腔医疗服务龙头企业，具备较强的品牌优势和成长潜力。
+                        但当前估值水平偏高，技术面呈现调整态势，建议投资者保持谨慎态度，
+                        可等待合适时机再考虑介入。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

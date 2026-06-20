@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习系统 - 投资交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .learning-path-step {
+            transition: all 0.3s ease;
+        }
+        .learning-path-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .learning-path-step.completed {
+            border-left: 4px solid #10B981;
+        }
+        .learning-path-step.current {
+            border-left: 4px solid #3B82F6;
+        }
+        .learning-path-step.upcoming {
+            border-left: 4px solid #D1D5DB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">投资学习系统</h1>
+            <p class="text-gray-600">体系化的投资知识学习路径，帮助您从入门到精通</p>
+        </div>
+
+        <!-- 学习路径概览 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-route text-primary mr-3"></i>
+                完整学习路径
+            </h2>
+            
+            <div class="space-y-6">
+                <!-- 第一阶段：基础知识 -->
+                <div class="learning-path-step completed bg-white border rounded-lg p-5">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-check text-green-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">第一阶段：投资基础知识</h3>
+                            <p class="text-gray-600 mb-3">掌握投资的基本概念、金融市场构成和投资工具分类</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">金融市场概览</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 股票市场基础</li>
+                                        <li>• 债券市场原理</li>
+                                        <li>• 基金产品介绍</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">投资基本概念</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 风险与收益</li>
+                                        <li>• 资产配置</li>
+                                        <li>• 复利效应</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">财务报表阅读</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 资产负债表</li>
+                                        <li>• 利润表分析</li>
+                                        <li>• 现金流量表</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二阶段：分析方法 -->
+                <div class="learning-path-step current bg-white border rounded-lg p-5">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-play text-blue-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">第二阶段：投资分析方法</h3>
+                            <p class="text-gray-600 mb-3">学习基本面分析、技术分析和宏观经济分析方法</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">基本面分析</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 行业分析框架</li>
+                                        <li>• 公司估值方法</li>
+                                        <li>• 财务指标解读</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">技术分析</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• K线图解读</li>
+                                        <li>• 趋势分析</li>
+                                        <li>• 技术指标应用</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">宏观经济分析</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 经济周期理论</li>
+                                        <li>• 政策影响分析</li>
+                                        <li>• 市场情绪判断</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三阶段：实战应用 -->
+                <div class="learning-path-step upcoming bg-white border rounded-lg p-5">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-clock text-gray-400"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">第三阶段：实战交易应用</h3>
+                            <p class="text-gray-600 mb-3">构建交易系统、风险管理策略和投资组合管理</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">交易系统构建</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 选股策略</li>
+                                        <li>• 买卖时机</li>
+                                        <li>• 仓位管理</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">风险管理</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 止损策略</li>
+                                        <li>• 分散投资</li>
+                                        <li>• 杠杆控制</li>
+                                    </ul>
+                                </div>
+                                <div class="border rounded-lg p-4">
+                                    <h4 class="font-medium text-gray-800 mb-2">心理建设</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• 情绪控制</li>
+                                        <li>• 交易纪律</li>
+                                        <li>• 长期心态</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学习资源 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-book-open text-primary mr-3"></i>
+                学习资源推荐
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-book text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">经典书籍</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-bookmark text-yellow-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">《聪明的投资者》- 本杰明·格雷厄姆</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bookmark text-yellow-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">《证券分析》- 格雷厄姆&多德</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bookmark text-yellow-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">《漫步华尔街》- 伯顿·马尔基尔</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-laptop text-green-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">在线课程</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-graduation-cap text-blue-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">价值投资基础课程</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-graduation-cap text-blue-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">技术分析实战教程</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-graduation-cap text-blue-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">财务报表分析精讲</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-chart-line text-purple-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800">实践工具</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-tools text-red-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">模拟交易平台</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tools text-red-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">投资组合分析工具</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-tools text-red-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">财经数据查询系统</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

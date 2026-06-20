@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 世界经济发展</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .country-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background-color: #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">世界主要国家经济发展历程</h1>
+            <p class="text-gray-600">回顾世界主要经济体的发展轨迹与关键节点</p>
+        </div>
+
+        <!-- 全球经济概览 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6 country-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-primary">
+                        <i class="fas fa-globe-americas text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">全球经济总量</p>
+                        <p class="text-xl font-bold">100万亿+</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年全球GDP总量(美元)</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 country-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-accent">
+                        <i class="fas fa-flag-usa text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">美国GDP</p>
+                        <p class="text-xl font-bold">25万亿</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年美国GDP(美元)</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 country-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                        <i class="fas fa-flag-europe text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">欧盟GDP</p>
+                        <p class="text-xl font-bold">19万亿</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年欧盟GDP(美元)</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6 country-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-yen-sign text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">日本GDP</p>
+                        <p class="text-xl font-bold">4.2万亿</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2024年日本GDP(美元)</p>
+            </div>
+        </div>
+
+        <!-- 各国发展历程 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- 美国 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-flag-usa text-red-600 mr-2"></i>
+                        美国经济发展历程
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">工业化起步 (18-19世纪)</h3>
+                            <p class="text-gray-600 text-sm mt-1">通过工业革命实现工业化，建立完整的工业体系，成为世界工业强国。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">两次世界大战 (20世纪上半叶)</h3>
+                            <p class="text-gray-600 text-sm mt-1">两次世界大战使美国成为债权国和世界工厂，经济实力大幅提升。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">黄金时代 (1950-1970年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">战后经济繁荣期，GDP年均增长4%，布雷顿森林体系确立美元霸权地位。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">滞胀与调整 (1970-1980年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">经历滞胀危机，通过里根经济学改革，重新焕发经济活力。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">新经济时代 (1990年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">信息技术革命推动经济高速增长，进入"新经济"时代。</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-bold text-gray-800">金融危机与复苏 (2000年代至今)</h3>
+                            <p class="text-gray-600 text-sm mt-1">经历互联网泡沫和2008年金融危机，通过量化宽松等政策实现经济复苏。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 德国 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-flag-germany text-black mr-2"></i>
+                        德国经济发展历程
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">统一与工业化 (19世纪)</h3>
+                            <p class="text-gray-600 text-sm mt-1">德国统一后快速工业化，成为欧洲工业强国，形成重工业基础。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">两次世界大战 (20世纪上半叶)</h3>
+                            <p class="text-gray-600 text-sm mt-1">两次世界大战对经济造成严重破坏，战后被分裂为东西两部分。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">经济奇迹 (1950-1970年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">战后西德经济快速恢复和发展，年均增长率超过5%，创造"经济奇迹"。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">统一与挑战 (1990年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">东西德统一，承担巨大的经济整合成本，经济增长放缓。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">欧洲核心 (2000年代至今)</h3>
+                            <p class="text-gray-600 text-sm mt-1">成为欧盟经济核心国家，引领欧元区经济发展，但面临人口老龄化等挑战。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- 日本 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-flag-japan text-red-600 mr-2"></i>
+                        日本经济发展历程
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">明治维新 (1868-1912年)</h3>
+                            <p class="text-gray-600 text-sm mt-1">通过明治维新实现现代化转型，建立现代工业体系，摆脱殖民危机。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">战前发展 (1912-1945年)</h3>
+                            <p class="text-gray-600 text-sm mt-1">两次世界大战期间工业化加速，但军国主义扩张最终导致战败。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">战后复兴 (1945-1960年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">在美国扶持下快速恢复经济，实施"国民收入倍增计划"，实现经济高速增长。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">经济奇迹 (1970-1980年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">成为世界第二大经济体，汽车、电子等产业全球领先。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">泡沫经济与失落的三十年 (1990年代至今)</h3>
+                            <p class="text-gray-600 text-sm mt-1">经历资产泡沫破裂，进入长期经济停滞期，被称为"失落的三十年"。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 英国 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-flag-uk text-blue-600 mr-2"></i>
+                        英国经济发展历程
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">工业革命发源地 (18-19世纪)</h3>
+                            <p class="text-gray-600 text-sm mt-1">率先完成工业革命，成为"世界工厂"，建立日不落帝国。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">两次世界大战 (20世纪上半叶)</h3>
+                            <p class="text-gray-600 text-sm mt-1">两次世界大战消耗巨大，失去世界霸主地位，殖民体系瓦解。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">福利国家建设 (1950-1970年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">建立福利国家体系，经济稳步发展，但面临"英国病"问题。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">撒切尔改革 (1980年代)</h3>
+                            <p class="text-gray-600 text-sm mt-1">实施私有化改革，控制通胀，重振经济活力。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-gray-800">脱欧与转型 (2000年代至今)</h3>
+                            <p class="text-gray-600 text-sm mt-1">经历2008年金融危机和脱欧挑战，经济结构持续调整。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 金砖国家 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">新兴经济体发展</h2>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 中国 -->
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-flag-china text-red-600 mr-2"></i>
+                            中国
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">从农业国发展为世界第二大经济体，通过改革开放实现跨越式发展。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>1978年改革开放，经济快速增长</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>2010年成为世界第二大经济体</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>制造业规模居世界第一</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 印度 -->
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-lg mb-3 flex items-center">
+                            <i class="fas fa-flag-india text-orange-600 mr-2"></i>
+                            印度
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">人口大国，通过信息技术服务和制造业发展推动经济增长。</p>
+                        <ul class="text-gray-600 text-sm space-y-1">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>1991年经济自由化改革</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>IT服务业全球领先</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>世界主要新兴市场之一</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 发展模式比较 -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">主要发展模式比较</h2>
+            </div>
+            <div class="p-6">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">国家/地区</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">发展模式</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">特点</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">主要产业</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">美国</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">自由市场经济</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">创新驱动，金融发达</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">科技、金融、军工</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">德国</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">社会市场经济</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">制造业强国，中小企业发达</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">汽车、机械、化工</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">日本</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">政府主导型市场经济</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">精益制造，技术领先</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">汽车、电子、精密制造</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">中国</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">社会主义市场经济</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">政府与市场结合，快速发展</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">制造业、基建、数字经济</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

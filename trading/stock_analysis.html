@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 个股分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .analysis-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .metric-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .metric-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">个股分析</h1>
+            <p class="text-gray-600">精选个股深度分析</p>
+        </div>
+
+        <!-- 个股分析列表 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow analysis-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary">
+                            <i class="fas fa-tooth text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">通策医疗 (600763)</h3>
+                            <p class="text-gray-600 text-sm">口腔医疗服务龙头企业</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-lg font-bold text-gray-800">128.50元</span>
+                        <span class="text-red-500 font-medium">-1.23%</span>
+                    </div>
+                    <div class="mt-4">
+                        <a href="tongce_medical.html" target="_blank" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-600">
+                            深度分析
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow analysis-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-accent">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">传智教育 (003032)</h3>
+                            <p class="text-gray-600 text-sm">IT职业培训领军企业</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-lg font-bold text-gray-800">15.80元</span>
+                        <span class="text-green-500 font-medium">+2.60%</span>
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" onclick="loadAnalysis('传智教育')" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-600">
+                            深度分析
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 可以继续添加更多个股分析 -->
+            <div class="bg-white rounded-lg shadow analysis-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                            <i class="fas fa-plus text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">更多个股</h3>
+                            <p class="text-gray-600 text-sm">持续更新中...</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-lg font-bold text-gray-800">--</span>
+                        <span class="text-gray-500 font-medium">--</span>
+                    </div>
+                    <div class="mt-4">
+                        <button class="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                            敬请期待
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        function loadAnalysis(stockName) {
+            if (stockName === '传智教育') {
+                // 重新加载当前页面以显示传智教育的分析内容
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

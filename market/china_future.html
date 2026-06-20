@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 中国未来十年</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .future-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-dot {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-dot:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .timeline-dot:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background-color: #E5E7EB;
+        }
+        .history-line {
+            position: relative;
+            padding-left: 24px;
+        }
+        .history-line:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #3B82F6, #10B981);
+            border-radius: 2px;
+        }
+        .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+        .glow-green { box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <main class="flex-1 p-6">
+        <!-- 页面标题 -->
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">中国未来十年：历史的镜子与科技的远方</h1>
+            <p class="text-gray-600">以史为鉴，看清大势 —— 那些亘古不变的规律，和正在发生的剧变</p>
+        </div>
+
+        <!-- 第一部分：亘古不变的历史规律 -->
+        <div class="bg-white rounded-lg shadow mb-6 glow-blue">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800"><i class="fas fa-scroll mr-2 text-primary"></i>亘古不变的历史规律</h2>
+                <p class="text-gray-500 text-sm mt-1">历史不会简单重复，但总是押着相同的韵脚</p>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- 规律一 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold mr-2">规律一</span>
+                                <h3 class="font-bold text-gray-800">大国崛起必经工业化→科技化→金融化</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                英国、美国、日本、韩国，无一例外。先靠制造业积累财富，再靠科技创新实现跨越，最后靠金融资本收割全球。
+                                <strong>中国正处于工业化完成、科技化加速的关键转折点</strong>——这正是日本1970年代、韩国1990年代所处的位置。
+                                历史告诉我们：在这个阶段，科技股的表现会远超传统行业。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 规律二 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold mr-2">规律二</span>
+                                <h3 class="font-bold text-gray-800">技术封锁从来挡不住后发者</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                1950年代美国封锁日本半导体，日本反而在1980年代称霸全球。
+                                1980年代美国打压日本汽车，日本车企照样横扫世界。
+                                <strong>封锁是后发者最好的老师</strong>——它倒逼自主创新，催生国产替代。
+                                中国芯片、操作系统、工业软件的国产替代浪潮，正在重演这段历史。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 规律三 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold mr-2">规律三</span>
+                                <h3 class="font-bold text-gray-800">人口结构决定消费结构</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                日本1990年代进入老龄化后，医疗、养老、保险行业诞生了十倍股。
+                                <strong>中国2025年60岁以上人口已超3亿</strong>，到2035年将突破4亿。
+                                与日本不同的是：中国有14亿人口的统一大市场，老龄化的产业规模将远超日本。
+                                医疗健康、养老服务、智能看护——这是确定性最强的十年赛道。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 规律四 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded font-bold mr-2">规律四</span>
+                                <h3 class="font-bold text-gray-800">每一代人都低估新技术的渗透速度</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                1995年没人相信互联网会改变一切；2007年没人相信智能手机会人手一台；2015年没人相信移动支付会消灭现金。
+                                <strong>AI正在重演这一切</strong>——2025年的AI就像2000年的互联网：泡沫已破，真正的价值刚刚开始。
+                                历史规律：技术炒作期过后，真正的赢家是把技术落地到具体场景的公司。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 规律五 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded font-bold mr-2">规律五</span>
+                                <h3 class="font-bold text-gray-800">周期永远存在，恐慌永远过度</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                从1637年荷兰郁金香到2008年次贷危机，从1929年大萧条到2020年疫情暴跌——
+                                市钟摆永远在极度贪婪和极度恐惧之间摆动。<strong>但长期来看，优质资产的价格中枢一直在上升。</strong>
+                                标普500从1929年崩盘前的高点到今天，涨了200倍。投资者最大的敌人不是市场，而是自己的情绪。
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 规律六 -->
+                    <div class="history-line">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded font-bold mr-2">规律六</span>
+                                <h3 class="font-bold text-gray-800">能源革命重塑世界格局</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                煤炭成就了英国，石油成就了美国。<strong>新能源正在成就中国。</strong>
+                                中国光伏占全球80%产能，新能源车销量占全球60%，电池产能占全球70%。
+                                这不是预测，这是已经发生的事实。谁掌握了新能源，谁就掌握了下一个时代的命脉。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二部分：科技行业走到哪了 -->
+        <div class="bg-white rounded-lg shadow mb-6 glow-green">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800"><i class="fas fa-microchip mr-2 text-accent"></i>中国科技行业：走到哪了？要去哪？</h2>
+                <p class="text-gray-500 text-sm mt-1">对标全球科技发展路径，看清中国的位置</p>
+            </div>
+            <div class="p-6">
+                <!-- 全球科技坐标系 -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-gray-800 mb-4 text-lg">中国在全球科技坐标系中的位置</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 border rounded-lg">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">科技领域</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">全球排名</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">与美国差距</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">趋势判断</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">关键突破点</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-bolt text-yellow-500 mr-1"></i> 新能源（光伏/电池/车）
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-bold">全球第一</span></td>
+                                    <td class="px-4 py-3 text-sm text-green-600 font-medium">领先美国</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">从追赶者变为引领者</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">固态电池、钙钛矿光伏</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-robot text-blue-500 mr-1"></i> 人工智能应用
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold">全球第二</span></td>
+                                    <td class="px-4 py-3 text-sm text-yellow-600">差距1-2年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">应用落地速度领先</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">大模型、AI Agent、具身智能</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-satellite text-purple-500 mr-1"></i> 航天/北斗/卫星
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold">全球第二</span></td>
+                                    <td class="px-4 py-3 text-sm text-yellow-600">差距2-3年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">快速追赶中</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">可回收火箭、低轨星座</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-microchip text-red-500 mr-1"></i> 半导体/芯片
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold">全球第三</span></td>
+                                    <td class="px-4 py-3 text-sm text-red-600">差距5-8年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">成熟制程突破，先进制程攻关</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">EUV光刻、先进封装、EDA</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-code text-indigo-500 mr-1"></i> 工业软件/操作系统
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold">全球第四</span></td>
+                                    <td class="px-4 py-3 text-sm text-red-600">差距8-10年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">国产替代刚刚起步</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">CAD/CAE/ERP、鸿蒙生态</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-dna text-green-500 mr-1"></i> 生物医药/基因
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold">全球第三</span></td>
+                                    <td class="px-4 py-3 text-sm text-yellow-600">差距3-5年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">创新药出海加速</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">ADC、双抗、基因治疗</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <i class="fas fa-atom text-teal-500 mr-1"></i> 量子计算/通信
+                                    </td>
+                                    <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded font-bold">全球第二</span></td>
+                                    <td class="px-4 py-3 text-sm text-yellow-600">差距1-2年</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">量子通信领先，计算追赶</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">量子纠错、实用化</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 科技行业十年路线图 -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-gray-800 mb-4 text-lg">中国科技行业未来十年路线图</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- 近期 -->
+                        <div class="border-2 border-blue-200 rounded-lg p-5 bg-blue-50">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-bold">2025-2027</span>
+                                <span class="ml-2 text-sm font-medium text-blue-700">突破期</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-blue-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">AI大模型落地</p>
+                                        <p class="text-xs text-gray-500">从通用大模型到行业垂直应用爆发</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-blue-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">芯片成熟制程自主</p>
+                                        <p class="text-xs text-gray-500">28nm及以上全面国产化</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-blue-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">新能源汽车渗透率超60%</p>
+                                        <p class="text-xs text-gray-500">燃油车加速退出</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-blue-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">鸿蒙生态成型</p>
+                                        <p class="text-xs text-gray-500">原生应用突破10万</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 中期 -->
+                        <div class="border-2 border-green-200 rounded-lg p-5 bg-green-50">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">2028-2031</span>
+                                <span class="ml-2 text-sm font-medium text-green-700">跨越期</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">AI Agent无处不在</p>
+                                        <p class="text-xs text-gray-500">每个人都有AI助手，每个企业都有AI员工</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">芯片先进制程突破</p>
+                                        <p class="text-xs text-gray-500">7nm及以下实现自主可控</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">机器人进入家庭</p>
+                                        <p class="text-xs text-gray-500">人形机器人价格降至10万元级别</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">低空经济成型</p>
+                                        <p class="text-xs text-gray-500">eVTOL商业化运营，无人机物流普及</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 远期 -->
+                        <div class="border-2 border-purple-200 rounded-lg p-5 bg-purple-50">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-purple-500 text-white text-xs px-3 py-1 rounded-full font-bold">2032-2035</span>
+                                <span class="ml-2 text-sm font-medium text-purple-700">引领期</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-purple-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">通用人工智能萌芽</p>
+                                        <p class="text-xs text-gray-500">AI能力接近人类水平的特定领域</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-purple-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">量子计算实用化</p>
+                                        <p class="text-xs text-gray-500">特定问题上超越经典计算机</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-purple-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">脑机接口医疗应用</p>
+                                        <p class="text-xs text-gray-500">瘫痪患者恢复运动能力</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-check text-purple-500 mt-1 mr-2 text-sm"></i>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-800">核聚变实验突破</p>
+                                        <p class="text-xs text-gray-500">从科学验证走向工程化</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 关键结论 -->
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-6 border border-blue-100">
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg"><i class="fas fa-lightbulb mr-2 text-warning"></i>核心判断</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                                <p class="text-sm text-gray-700"><strong>中国科技已从"跟跑"进入"并跑"阶段</strong>，在新能源、5G、AI应用等领域已实现"领跑"</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                                <p class="text-sm text-gray-700"><strong>半导体是最难啃的骨头</strong>，但历史证明封锁只会加速突破，预计2030年前实现先进制程自主</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right text-green-500 mt-1 mr-2"></i>
+                                <p class="text-sm text-gray-700"><strong>AI是这一代人的"互联网时刻"</strong>，2025-2030年将诞生新的万亿级公司</p>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right text-green-500 mt-1 mr-2"></i>
+                                <p class="text-sm text-gray-700"><strong>科技国产替代是未来十年最确定的投资主线</strong>，从芯片到软件，从设备到材料</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三部分：未来十年的关键变量 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- 确定性趋势 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200 bg-green-50">
+                    <h2 class="text-lg font-semibold text-gray-800"><i class="fas fa-anchor mr-2 text-accent"></i>确定性趋势（可以下注）</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">老龄化不可逆转</h3>
+                            <p class="text-gray-600 text-sm mt-1">60岁以上人口从3亿→4亿，医疗健康、养老服务需求爆发式增长。这是数学，不是预测。</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">能源转型不可逆转</h3>
+                            <p class="text-gray-600 text-sm mt-1">光伏、风电成本已低于煤电，新能源替代化石能源是经济规律，不是政策选择。</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">国产替代不可逆转</h3>
+                            <p class="text-gray-600 text-sm mt-1">供应链安全已上升为国家战略，从芯片到操作系统，国产替代是政治意志+市场需求的双重驱动。</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">数字化不可逆转</h3>
+                            <p class="text-gray-600 text-sm mt-1">企业数字化渗透率从30%→70%，云计算、SaaS、数据服务还有巨大空间。</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">消费分化不可逆转</h3>
+                            <p class="text-gray-600 text-sm mt-1">高端消费升级+大众消费降级并存，"性价比"和"高端化"两条线都有机会。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关键变量 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200 bg-yellow-50">
+                    <h2 class="text-lg font-semibold text-gray-800"><i class="fas fa-question-circle mr-2 text-warning"></i>关键变量（需要跟踪）</h2>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">中美关系走向</h3>
+                            <p class="text-gray-600 text-sm mt-1">脱钩还是共存？科技封锁的范围和力度？这是影响中国科技行业最大的外部变量。</p>
+                        </div>
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">房地产能否软着陆</h3>
+                            <p class="text-gray-600 text-sm mt-1">房地产占居民财富70%，能否平稳化解风险，直接决定消费信心和经济转型节奏。</p>
+                        </div>
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">地方债务化解</h3>
+                            <p class="text-gray-600 text-sm mt-1">地方政府债务规模超60万亿，如何化解将影响财政空间和基建投资力度。</p>
+                        </div>
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">人口出生率走势</h3>
+                            <p class="text-gray-600 text-sm mt-1">2023年出生人口902万，是否会继续下滑？这决定了20年后中国的劳动力和消费市场。</p>
+                        </div>
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <h3 class="font-bold text-gray-800">AI发展速度</h3>
+                            <p class="text-gray-600 text-sm mt-1">AI是加速还是遇到瓶颈？AGI何时到来？这将重塑所有行业的估值逻辑。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四部分：历史镜鉴——他国经验 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800"><i class="fas fa-globe-americas mr-2 text-primary"></i>历史镜鉴：中国最像谁？</h2>
+                <p class="text-gray-500 text-sm mt-1">对标历史上相似发展阶段的国家，寻找参照系</p>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <!-- 日本 -->
+                    <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🇯🇵</span>
+                            <div>
+                                <h3 class="font-bold text-gray-800">日本（1970-1990）</h3>
+                                <p class="text-xs text-gray-500">最相似的参照系</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <p><strong>相似点：</strong>制造业大国转型科技、出口导向→内需驱动、人口老龄化起步、房地产泡沫</p>
+                            <p><strong>不同点：</strong>日本当年人均GDP已超美国，中国仍有巨大提升空间；日本没有独立的互联网生态</p>
+                            <p><strong>教训：</strong>房地产泡沫破裂后，日本股市跌了20年。但科技股（索尼、丰田）长期仍然跑赢</p>
+                        </div>
+                    </div>
+                    <!-- 韩国 -->
+                    <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🇰🇷</span>
+                            <div>
+                                <h3 class="font-bold text-gray-800">韩国（1990-2010）</h3>
+                                <p class="text-xs text-gray-500">科技赶超的典范</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <p><strong>相似点：</strong>举国体制发展半导体、财阀经济模式、从代工到品牌的跨越</p>
+                            <p><strong>不同点：</strong>韩国市场太小，必须全球化；中国有14亿人的内需市场</p>
+                            <p><strong>启示：</strong>三星从内存代工到全球芯片巨头，花了20年。中国芯片也需要耐心</p>
+                        </div>
+                    </div>
+                    <!-- 美国 -->
+                    <div class="border rounded-lg p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center mb-3">
+                            <span class="text-2xl mr-2">🇺🇸</span>
+                            <div>
+                                <h3 class="font-bold text-gray-800">美国（1900-1930）</h3>
+                                <p class="text-xs text-gray-500">大国崛起的终极参照</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <p><strong>相似点：</strong>制造业全球第一、基础设施大建设、科技创新爆发、贫富分化加剧</p>
+                            <p><strong>不同点：</strong>美国当年没有核武器的和平红利，也没有互联网的加速器</p>
+                            <p><strong>启示：</strong>1900-1930年美国诞生了通用电气、福特、杜邦等百年巨头。中国正在诞生自己的</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded">
+                    <div class="flex">
+                        <i class="fas fa-exclamation-circle text-amber-400 mt-1 mr-3"></i>
+                        <div>
+                            <p class="text-sm text-amber-800 font-medium">关键结论：中国最像1970年代的日本，但有三个关键优势</p>
+                            <ul class="text-sm text-amber-700 mt-2 space-y-1 list-disc pl-5">
+                                <li><strong>市场纵深：</strong>14亿人口的统一市场，任何产品都有规模效应</li>
+                                <li><strong>体制优势：</strong>集中力量办大事，突破"卡脖子"技术的执行力</li>
+                                <li><strong>后发优势：</strong>可以直接跳过中间阶段（如跳过固定电话直接进入移动互联网）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五部分：给投资者的启示 -->
+        <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg shadow text-white">
+            <div class="px-6 py-4 border-b border-gray-700">
+                <h2 class="text-lg font-semibold"><i class="fas fa-coins mr-2 text-yellow-400"></i>给投资者的启示</h2>
+                <p class="text-gray-400 text-sm mt-1">历史规律告诉我们的投资逻辑</p>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-white mb-4 text-lg">未来十年的三条主线</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded font-bold mr-2">主线一</span>
+                                    <h4 class="font-bold text-white">科技自主可控</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">芯片、操作系统、工业软件、数据库——凡是被"卡脖子"的领域，都是未来十年的国产替代机会。确定性最高，但需要耐心。</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded font-bold mr-2">主线二</span>
+                                    <h4 class="font-bold text-white">AI重塑一切</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">AI不是独立的行业，而是像电力一样的通用技术。未来十年，不会用AI的公司会被会用AI的公司淘汰。关注AI+制造、AI+医疗、AI+教育。</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded font-bold mr-2">主线三</span>
+                                    <h4 class="font-bold text-white">老龄化红利</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">4亿老年人 = 全球最大的银发经济市场。医疗、养老、保险、健康管理——这是确定性最强、持续时间最长的投资主题。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-4 text-lg">亘古不变的投资智慧</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start bg-gray-700 rounded-lg p-4">
+                                <span class="text-yellow-400 text-xl mr-3">"</span>
+                                <div>
+                                    <p class="text-white font-medium">买股票就是买国运</p>
+                                    <p class="text-gray-400 text-sm mt-1">巴菲特说"没有人能靠做空自己的祖国赚钱"。如果你相信中国会继续发展，就应该在恐慌时买入优质资产。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start bg-gray-700 rounded-lg p-4">
+                                <span class="text-yellow-400 text-xl mr-3">"</span>
+                                <div>
+                                    <p class="text-white font-medium">在别人恐惧时贪婪</p>
+                                    <p class="text-gray-400 text-sm mt-1">2008年金融危机后买入任何优质股票，到今天都翻了5-10倍。市场恐慌是最好的买入机会。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start bg-gray-700 rounded-lg p-4">
+                                <span class="text-yellow-400 text-xl mr-3">"</span>
+                                <div>
+                                    <p class="text-white font-medium">时间是优质资产的朋友</p>
+                                    <p class="text-gray-400 text-sm mt-1">茅台上市20年涨了300倍，腾讯上市20年涨了500倍。伟大的公司需要时间来证明自己。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start bg-gray-700 rounded-lg p-4">
+                                <span class="text-yellow-400 text-xl mr-3">"</span>
+                                <div>
+                                    <p class="text-white font-medium">不要试图预测短期，但要理解长期</p>
+                                    <p class="text-gray-400 text-sm mt-1">没有人能准确预测明天的涨跌，但历史规律告诉我们：科技革命+大国崛起+人口红利=长期牛市。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

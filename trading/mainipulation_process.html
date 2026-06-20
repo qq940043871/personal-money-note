@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 庄家坐庄收割全过程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .phase-card {
+            transition: all 0.3s ease;
+        }
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .step-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        .step-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .step-number {
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">庄家坐庄收割全过程</h1>
+            <p class="text-gray-600">揭秘庄家操纵股价的完整流程和手法</p>
+        </div>
+
+        <!-- 各个阶段 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary">
+                            <i class="fas fa-search text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第一阶段</h3>
+                            <p class="text-gray-600 text-sm">选股建仓</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">寻找目标股票，逐步建仓</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-accent">
+                            <i class="fas fa-arrow-up text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第二阶段</h3>
+                            <p class="text-gray-600 text-sm">拉升股价</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">通过各种手段推高股价</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                            <i class="fas fa-bullhorn text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第三阶段</h3>
+                            <p class="text-gray-600 text-sm">高位派发</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">吸引散户接盘，逐步出货</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-red-100 text-danger">
+                            <i class="fas fa-arrow-down text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第四阶段</h3>
+                            <p class="text-gray-600 text-sm">砸盘收割</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">快速砸盘，完成收割</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第一阶段：选股建仓 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-search mr-2 text-primary"></i>第一阶段：选股建仓
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">选股标准</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">流通盘较小</p>
+                                <p class="text-gray-600 text-sm mt-1">通常选择流通股本在1-3亿股的股票，便于操控。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">股东结构简单</p>
+                                <p class="text-gray-600 text-sm mt-1">大股东持股比例较高，散户数量较少的股票。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">题材概念丰富</p>
+                                <p class="text-gray-600 text-sm mt-1">具备热点题材或潜在重组预期的股票。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">建仓手法</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">打压吸筹</p>
+                                <p class="text-gray-600 text-sm mt-1">通过大单压盘制造恐慌，低价收集筹码。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">横盘吸筹</p>
+                                <p class="text-gray-600 text-sm mt-1">在低位长时间震荡，逐步收集筹码。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">拉高吸筹</p>
+                                <p class="text-gray-600 text-sm mt-1">快速拉高测试抛压，同时收集筹码。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二阶段：拉升股价 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-arrow-up mr-2 text-accent"></i>第二阶段：拉升股价
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">拉升前准备</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">释放利好消息</p>
+                                <p class="text-gray-600 text-sm mt-1">通过各种渠道发布对公司有利的消息。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">技术形态整理</p>
+                                <p class="text-gray-600 text-sm mt-1">形成突破形态，吸引技术分析者关注。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">媒体造势</p>
+                                <p class="text-gray-600 text-sm mt-1">通过财经媒体、股评等方式宣传推荐。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">拉升手法</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">阶梯式拉升</p>
+                                <p class="text-gray-600 text-sm mt-1">每拉升一定幅度就横盘整理，逐步抬高底部。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">波浪式拉升</p>
+                                <p class="text-gray-600 text-sm mt-1">连续上涨后快速回调，再继续上涨。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">火箭式拉升</p>
+                                <p class="text-gray-600 text-sm mt-1">连续涨停或大阳线快速推高股价。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三阶段：高位派发 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-bullhorn mr-2 text-warning"></i>第三阶段：高位派发
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">吸引散户接盘</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">制造赚钱效应</p>
+                                <p class="text-gray-600 text-sm mt-1">通过连续上涨让散户产生赚钱幻想。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">利用信息不对称</p>
+                                <p class="text-gray-600 text-sm mt-1">提前透露部分信息，诱导散户跟风买入。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">营造牛市氛围</p>
+                                <p class="text-gray-600 text-sm mt-1">配合大盘走势，制造普涨假象。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">派发手法</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">高位震荡</p>
+                                <p class="text-gray-600 text-sm mt-1">在高位反复震荡，逐步减少仓位。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">假突破真出货</p>
+                                <p class="text-gray-600 text-sm mt-1">制造突破新高的假象，吸引散户高位接盘。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">对倒出货</p>
+                                <p class="text-gray-600 text-sm mt-1">自买自卖制造虚假繁荣，掩护真实出货行为。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四阶段：砸盘收割 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-arrow-down mr-2 text-danger"></i>第四阶段：砸盘收割
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">收割方式</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">断崖式下跌</p>
+                                <p class="text-gray-600 text-sm mt-1">不计成本快速砸盘，造成恐慌性抛售。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">温水煮青蛙</p>
+                                <p class="text-gray-600 text-sm mt-1">缓慢阴跌，让散户在不知不觉中被套。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">补仓陷阱</p>
+                                <p class="text-gray-600 text-sm mt-1">制造反弹假象，诱使散户补仓后继续下跌。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">散户应对策略</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">识别庄股特征</p>
+                                <p class="text-gray-600 text-sm mt-1">注意成交量异常、走势独立等特征。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">控制仓位</p>
+                                <p class="text-gray-600 text-sm mt-1">避免重仓持有单一股票。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">及时止损</p>
+                                <p class="text-gray-600 text-sm mt-1">设定止损位，避免深度套牢。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 总结 -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">总结</h2>
+            <p class="text-gray-700">
+                了解庄家坐庄的全过程有助于散户更好地保护自己。作为普通投资者，应该：
+                <span class="font-bold">理性投资、控制风险、独立思考</span>，不要盲目跟风炒作。
+                同时要注意识别市场中的各种操纵行为，遵守法律法规，共同维护健康的投资环境。
+            </p>
+        </div>
+    </main>
+</body>
+</html>

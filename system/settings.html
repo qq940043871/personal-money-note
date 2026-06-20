@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 个人设置</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航栏 -->
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">个人设置</h1>
+                <p class="text-gray-600">管理您的账户信息和系统偏好</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 个人信息 -->
+                <div class="lg:col-span-1 bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-lg font-semibold text-gray-800">个人信息</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-col items-center mb-6">
+                            <div class="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-3xl mb-4">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button class="text-primary hover:text-blue-700 text-sm">
+                                <i class="fas fa-camera mr-1"></i> 更换头像
+                            </button>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                                <input type="text" value="张三" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                                <input type="email" value="zhangsan@example.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">手机号</label>
+                                <input type="tel" value="138****8888" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">职业</label>
+                                <input type="text" value="金融分析师" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div class="pt-4">
+                                <button class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                                    保存信息
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 系统设置 -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-lg font-semibold text-gray-800">系统设置</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <!-- 通知设置 -->
+                            <div>
+                                <h3 class="text-md font-medium text-gray-800 mb-3">通知设置</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-700">邮件通知</p>
+                                            <p class="text-sm text-gray-500">接收重要通知和系统更新</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-700">短信通知</p>
+                                            <p class="text-sm text-gray-500">接收交易确认和安全提醒</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-700">应用内通知</p>
+                                            <p class="text-sm text-gray-500">在应用内接收消息提醒</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 显示设置 -->
+                            <div>
+                                <h3 class="text-md font-medium text-gray-800 mb-3">显示设置</h3>
+                                <div class="space-y-3">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">主题</label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                            <option>浅色主题</option>
+                                            <option>深色主题</option>
+                                            <option>自动</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">语言</label>
+                                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                            <option>简体中文</option>
+                                            <option>English</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 安全设置 -->
+                            <div>
+                                <h3 class="text-md font-medium text-gray-800 mb-3">安全设置</h3>
+                                <div class="space-y-3">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">登录密码</label>
+                                        <div class="flex">
+                                            <input type="password" value="********" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:ring-primary focus:border-primary" readonly>
+                                            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-r-lg border border-l-0 border-gray-300">
+                                                修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">支付密码</label>
+                                        <div class="flex">
+                                            <input type="password" value="********" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:ring-primary focus:border-primary" readonly>
+                                            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-r-lg border border-l-0 border-gray-300">
+                                                修改
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="pt-2">
+                                        <button class="text-danger hover:text-red-700 flex items-center">
+                                            <i class="fas fa-sign-out-alt mr-2"></i> 退出登录
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 数据管理 -->
+                            <div>
+                                <h3 class="text-md font-medium text-gray-800 mb-3">数据管理</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-700">数据备份</p>
+                                            <p class="text-sm text-gray-500">定期备份您的投资数据</p>
+                                        </div>
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-1 px-3 rounded-lg text-sm">
+                                            立即备份
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-gray-700">数据导出</p>
+                                            <p class="text-sm text-gray-500">导出您的投资记录和分析报告</p>
+                                        </div>
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-1 px-3 rounded-lg text-sm">
+                                            导出数据
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script>
+        function loadPage(page) {
+            parent.loadPage(page);
+        }
+    </script>
+</body>
+</html>

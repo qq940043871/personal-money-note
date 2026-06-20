@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 行业追踪</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .industry-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .rating-a {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        .rating-b {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .rating-c {
+            background-color: #ffe4e6;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">行业追踪</h1>
+                <p class="text-gray-600">行业评级与投资机会分析</p>
+            </div>
+            <button class="bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg flex items-center">
+                <i class="fas fa-sync-alt mr-2"></i> 刷新数据
+            </button>
+        </div>
+
+        <!-- 行业概览 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-primary">
+                        <i class="fas fa-industry text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">跟踪行业数量</p>
+                        <p class="text-2xl font-bold">12</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-accent">
+                        <i class="fas fa-star text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">A级行业</p>
+                        <p class="text-2xl font-bold">5</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-gray-500 text-sm">重点关注</p>
+                        <p class="text-2xl font-bold">3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行业评级说明 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">行业评级说明</h2>
+            </div>
+            <div class="p-6">
+                <p class="text-gray-700 mb-4">
+                    我们根据行业发展前景、政策支持、市场空间、竞争格局、财务表现等多个维度对各行业进行综合评级，
+                    为投资决策提供参考。评级分为A、B、C三个等级：
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border-l-4 border-green-500 pl-4 py-1">
+                        <h3 class="font-bold text-gray-800">A级 (积极配置)</h3>
+                        <p class="text-gray-600 text-sm mt-1">行业景气度高，增长潜力大，政策支持力度强</p>
+                    </div>
+                    <div class="border-l-4 border-yellow-500 pl-4 py-1">
+                        <h3 class="font-bold text-gray-800">B级 (适度配置)</h3>
+                        <p class="text-gray-600 text-sm mt-1">行业稳定发展，有一定投资机会，需关注变化</p>
+                    </div>
+                    <div class="border-l-4 border-red-500 pl-4 py-1">
+                        <h3 class="font-bold text-gray-800">C级 (谨慎配置)</h3>
+                        <p class="text-gray-600 text-sm mt-1">行业面临挑战，增长乏力，风险较高</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行业列表 -->
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="text-lg font-semibold text-gray-800">行业列表</h2>
+                <button class="text-primary hover:text-blue-700 text-sm">
+                    <i class="fas fa-plus mr-1"></i> 添加行业
+                </button>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">行业名称</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">评级</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">最新观点</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">更新时间</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">工业软件</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium rating-a">
+                                    A级
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">政策支持力度大，国产替代空间广阔</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-11-08</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-primary hover:text-blue-700 mr-2" onclick="parent.loadPage('industry/industrial_software.html')">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="text-danger hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">新能源汽车</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium rating-a">
+                                    A级
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">市场需求旺盛，技术不断突破</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-11-07</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-primary hover:text-blue-700 mr-2">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="text-danger hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">生物医药</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium rating-b">
+                                    B级
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">研发周期长，但创新药前景广阔</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-11-06</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-primary hover:text-blue-700 mr-2">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="text-danger hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">半导体</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium rating-a">
+                                    A级
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">国产替代加速，产业链投资机会多</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-11-05</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-primary hover:text-blue-700 mr-2">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="text-danger hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">房地产</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium rating-c">
+                                    C级
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">政策调控持续，行业面临转型压力</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-11-04</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button class="text-primary hover:text-blue-700 mr-2">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="text-danger hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 重点关注行业 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 工业软件行业分析 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">工业软件 (A级)</h2>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-microchip text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">政策支持力度大</h3>
+                            <p class="text-gray-600 text-sm">国家大力支持工业软件发展，出台多项扶持政策</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-chart-line text-green-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">市场空间广阔</h3>
+                            <p class="text-gray-600 text-sm">国产替代需求强烈，市场规模持续增长</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-yellow-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-lightbulb text-yellow-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">技术壁垒高</h3>
+                            <p class="text-gray-600 text-sm">技术门槛高，先发优势明显的企业更具竞争力</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg" onclick="parent.loadPage('industry/industrial_software.html')">
+                            查看详细分析
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新能源汽车行业分析 -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">新能源汽车 (A级)</h2>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-car text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">市场需求旺盛</h3>
+                            <p class="text-gray-600 text-sm">消费者接受度不断提高，渗透率持续提升</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-bolt text-green-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">技术不断突破</h3>
+                            <p class="text-gray-600 text-sm">电池技术、智能化水平持续提升</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-yellow-100 p-2 rounded-lg mr-3">
+                            <i class="fas fa-globe text-yellow-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800">全球化竞争</h3>
+                            <p class="text-gray-600 text-sm">中国企业在全球市场竞争力增强</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
+                            查看详细分析
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function loadPage(page) {
+            parent.loadPage(page);
+        }
+    </script>
+</body>
+</html>

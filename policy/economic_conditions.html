@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不同经济境况下的投资策略 - 投资交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .strategy-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #3B82F6;
+        }
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .condition-title {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .condition-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #3B82F6;
+        }
+        .company-type {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .defensive {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+        .cyclical {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+        .growth {
+            background-color: #DCFCE7;
+            color: #166534;
+        }
+        .value {
+            background-color: #F3E8FF;
+            color: #7C3AED;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">不同经济境况下的投资策略</h1>
+            <p class="text-gray-600">根据经济周期和市场环境选择合适的公司类型进行投资</p>
+        </div>
+
+        <!-- 经济繁荣期 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-sun text-yellow-500 mr-3"></i>
+                经济繁荣期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：GDP增长强劲，就业率高，消费者信心旺盛，企业盈利增长。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>周期性股票：<span class="company-type cyclical">钢铁、化工、汽车、房地产</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>成长型股票：<span class="company-type growth">科技、消费电子、新能源</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>金融股：<span class="company-type cyclical">银行、保险、券商</span></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>周期性行业受益于经济扩张，需求旺盛</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>成长型行业在经济繁荣期获得更多投资和消费</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>金融行业信贷需求增加，利差扩大</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 经济衰退期 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-cloud-rain text-gray-500 mr-3"></i>
+                经济衰退期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：GDP增长放缓或负增长，失业率上升，消费支出减少，企业盈利下滑。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>防御性股票：<span class="company-type defensive">医药、公用事业、食品饮料</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>必需消费品：<span class="company-type defensive">日用品、农产品、医疗保健</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>高股息股票：<span class="company-type value">公用事业、房地产投资信托</span></span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>防御性行业需求相对稳定，不受经济波动影响</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>必需消费品是生活基本需求，消费相对稳定</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>高股息股票提供稳定现金流，在市场低迷时更具吸引力</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通胀上升期 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-fire text-red-500 mr-3"></i>
+                通胀上升期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：物价普遍上涨，购买力下降，央行可能加息以控制通胀。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>资源类股票：<span class="company-type cyclical">石油、天然气、有色金属、煤炭</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>房地产：<span class="company-type cyclical">房地产开发商、建材</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span> commodities ETF</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>资源类公司产品价格上涨，利润增长</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>房地产具有抗通胀属性，资产价值随物价上涨</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>大宗商品价格与通胀正相关</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通缩期 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-snowflake text-blue-300 mr-3"></i>
+                通缩期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：物价持续下降，消费和投资需求不足，经济增长乏力。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>债券：<span class="company-type value">国债、高评级企业债</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>防御性股票：<span class="company-type defensive">医药、公用事业、消费必需品</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>现金及现金等价物</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>债券在通缩环境中实际收益率上升</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>防御性行业需求稳定，不受通缩影响</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>持有现金可等待更好的投资机会</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 利率上升期 -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-arrow-up text-red-500 mr-3"></i>
+                利率上升期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：央行加息以控制通胀或经济过热，借贷成本上升。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>金融股：<span class="company-type cyclical">银行、保险</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>价值股：<span class="company-type value">低估值、高股息股票</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>短期债券</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>银行净息差扩大，保险投资收益提升</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>价值股相对高估值成长股更具吸引力</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>短期债券受利率上升影响较小</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 利率下降期 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 condition-title flex items-center">
+                <i class="fas fa-arrow-down text-green-500 mr-3"></i>
+                利率下降期
+            </h2>
+            
+            <div class="prose max-w-none text-gray-700 mb-6">
+                <p>特征：央行降息以刺激经济增长，借贷成本降低。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">推荐投资类型</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>成长股：<span class="company-type growth">科技、生物医药、新兴行业</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>房地产：<span class="company-type cyclical">房地产开发商、家居</span></span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>长期债券</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card bg-gray-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">投资逻辑</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>成长股贴现率下降，估值提升</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>房地产需求增加，融资成本降低</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lightbulb text-blue-500 mt-1 mr-2"></i>
+                            <span>长期债券价格与利率负相关</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

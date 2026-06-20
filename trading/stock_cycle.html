@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 股价周期完整流程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .phase-card {
+            transition: all 0.3s ease;
+        }
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .step-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        .step-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #3B82F6;
+        }
+        .step-number {
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        .indicator-table th {
+            background-color: #EFF6FF;
+        }
+        .indicator-table td, .indicator-table th {
+            padding: 10px;
+            border: 1px solid #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">股价周期完整流程</h1>
+            <p class="text-gray-600">从底部到顶部再到底部的完整股价运行周期分析</p>
+        </div>
+
+        <!-- 股价周期阶段 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-blue-100 text-primary">
+                            <i class="fas fa-arrow-down text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第一阶段</h3>
+                            <p class="text-gray-600 text-sm">下跌末期</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">悲观情绪极致，成交量萎缩</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-green-100 text-accent">
+                            <i class="fas fa-arrow-up text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第二阶段</h3>
+                            <p class="text-gray-600 text-sm">底部构筑</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">资金开始介入，震荡筑底</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-yellow-100 text-warning">
+                            <i class="fas fa-rocket text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第三阶段</h3>
+                            <p class="text-gray-600 text-sm">上涨初期</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">突破关键阻力，加速上涨</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第四阶段</h3>
+                            <p class="text-gray-600 text-sm">上涨末期</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">疯狂上涨，风险积聚</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow phase-card">
+                <div class="p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 rounded-full bg-red-100 text-danger">
+                            <i class="fas fa-arrow-down text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-bold text-gray-800">第五阶段</h3>
+                            <p class="text-gray-600 text-sm">顶部构筑</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-700 text-sm">多空分歧加大，震荡见顶</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第一阶段：下跌末期 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-arrow-down mr-2 text-primary"></i>第一阶段：下跌末期
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">市场特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">极度悲观情绪</p>
+                                <p class="text-gray-600 text-sm mt-1">市场情绪跌至冰点，投资者信心严重不足。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">成交量极度萎缩</p>
+                                <p class="text-gray-600 text-sm mt-1">交易清淡，市场参与度极低。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">利空消息频发</p>
+                                <p class="text-gray-600 text-sm mt-1">各种负面消息不断，加剧市场恐慌。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">技术指标特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">RSI超卖</p>
+                                <p class="text-gray-600 text-sm mt-1">相对强弱指标跌至30以下。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">MACD底背离</p>
+                                <p class="text-gray-600 text-sm mt-1">价格创新低但MACD不创新低。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">布林带收口</p>
+                                <p class="text-gray-600 text-sm mt-1">布林带通道极度收窄，预示变盘。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二阶段：底部构筑 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-arrow-up mr-2 text-accent"></i>第二阶段：底部构筑
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">市场特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">资金开始介入</p>
+                                <p class="text-gray-600 text-sm mt-1">有资金开始试探性买入，成交量有所放大。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">震荡反复</p>
+                                <p class="text-gray-600 text-sm mt-1">股价在低位区域反复震荡，洗盘特征明显。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">利好消息增多</p>
+                                <p class="text-gray-600 text-sm mt-1">开始出现一些积极信号和政策支持。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">技术指标特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">双底/W底形态</p>
+                                <p class="text-gray-600 text-sm mt-1">出现经典的底部反转形态。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">均线粘合</p>
+                                <p class="text-gray-600 text-sm mt-1">各周期均线趋于粘合，等待方向选择。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">成交量温和放大</p>
+                                <p class="text-gray-600 text-sm mt-1">成交量逐步放大，但未出现巨量。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三阶段：上涨初期 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-rocket mr-2 text-warning"></i>第三阶段：上涨初期
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">市场特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">突破关键阻力</p>
+                                <p class="text-gray-600 text-sm mt-1">有效突破前期重要阻力位，确认反转。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">加速上涨</p>
+                                <p class="text-gray-600 text-sm mt-1">上涨速度加快，市场关注度提升。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">板块轮动</p>
+                                <p class="text-gray-600 text-sm mt-1">相关板块开始活跃，形成赚钱效应。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">技术指标特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">均线多头排列</p>
+                                <p class="text-gray-600 text-sm mt-1">短期均线上穿长期均线，形成多头排列。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">MACD金叉</p>
+                                <p class="text-gray-600 text-sm mt-1">DIFF线上穿DEA线，形成金叉。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">布林带开口</p>
+                                <p class="text-gray-600 text-sm mt-1">布林带通道开始向上开口，确认上涨趋势。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四阶段：上涨末期 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-chart-line mr-2 text-orange-600"></i>第四阶段：上涨末期
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">市场特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">疯狂上涨</p>
+                                <p class="text-gray-600 text-sm mt-1">股价加速上涨，市场情绪极度亢奋。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">散户大量入市</p>
+                                <p class="text-gray-600 text-sm mt-1">新开户数量激增，大量散户资金入市。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">利好消息频发</p>
+                                <p class="text-gray-600 text-sm mt-1">各种利好消息不断，市场乐观情绪达到顶峰。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">技术指标特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">RSI超买</p>
+                                <p class="text-gray-600 text-sm mt-1">相对强弱指标升至70以上。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">MACD顶背离</p>
+                                <p class="text-gray-600 text-sm mt-1">价格创新高但MACD不创新高。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">成交量巨幅放大</p>
+                                <p class="text-gray-600 text-sm mt-1">成交量达到历史高位，换手率极高。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五阶段：顶部构筑 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-arrow-down mr-2 text-danger"></i>第五阶段：顶部构筑
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">市场特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">多空分歧加大</p>
+                                <p class="text-gray-600 text-sm mt-1">看多和看空观点激烈交锋，市场方向不明。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">震荡加剧</p>
+                                <p class="text-gray-600 text-sm mt-1">股价波动幅度加大，高位震荡特征明显。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">主力资金撤离</p>
+                                <p class="text-gray-600 text-sm mt-1">主力资金开始逐步撤离，成交量出现异常。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-3">技术指标特征</h3>
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div>
+                                <p class="font-medium text-gray-800">双顶/M头形态</p>
+                                <p class="text-gray-600 text-sm mt-1">出现经典的顶部反转形态。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div>
+                                <p class="font-medium text-gray-800">均线死叉</p>
+                                <p class="text-gray-600 text-sm mt-1">短期均线下穿长期均线，形成空头排列。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div>
+                                <p class="font-medium text-gray-800">布林带收口</p>
+                                <p class="text-gray-600 text-sm mt-1">布林带通道开始收口，预示变盘。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 股价周期识别要点 -->
+        <div class="bg-white rounded-lg shadow mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">股价周期识别要点</h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="indicator-table w-full">
+                        <thead>
+                            <tr>
+                                <th class="text-left">阶段</th>
+                                <th class="text-left">情绪特征</th>
+                                <th class="text-left">成交量特征</th>
+                                <th class="text-left">技术指标</th>
+                                <th class="text-left">操作策略</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>下跌末期</td>
+                                <td>极度悲观</td>
+                                <td>极度萎缩</td>
+                                <td>RSI超卖、MACD底背离</td>
+                                <td>分批建仓</td>
+                            </tr>
+                            <tr>
+                                <td>底部构筑</td>
+                                <td>震荡反复</td>
+                                <td>温和放大</td>
+                                <td>双底形态、均线粘合</td>
+                                <td>逢低吸纳</td>
+                            </tr>
+                            <tr>
+                                <td>上涨初期</td>
+                                <td>逐步乐观</td>
+                                <td>持续放大</td>
+                                <td>均线多头、MACD金叉</td>
+                                <td>积极持有</td>
+                            </tr>
+                            <tr>
+                                <td>上涨末期</td>
+                                <td>极度亢奋</td>
+                                <td>巨幅放大</td>
+                                <td>RSI超买、MACD顶背离</td>
+                                <td>分批减仓</td>
+                            </tr>
+                            <tr>
+                                <td>顶部构筑</td>
+                                <td>多空分歧</td>
+                                <td>异常波动</td>
+                                <td>双顶形态、均线死叉</td>
+                                <td>清仓离场</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 总结 -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">总结</h2>
+            <p class="text-gray-700">
+                股价运行具有明显的周期性特征，从下跌末期到顶部构筑，每个阶段都有其独特的市场表现和技术特征。
+                作为投资者，需要：
+                <span class="font-bold">识别当前所处阶段，制定相应策略</span>，
+                在下跌末期分批建仓，在上涨初期积极持有，在上涨末期分批减仓，在顶部构筑完成时清仓离场。
+                同时要注意结合基本面分析，避免单纯依赖技术指标造成误判。
+            </p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 交易方法</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .strategy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航栏 -->
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+            <div class="mb-6 flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">交易方法</h1>
+                    <p class="text-gray-600">管理和优化您的交易策略</p>
+                </div>
+                <button class="bg-primary hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg flex items-center">
+                    <i class="fas fa-plus mr-2"></i> 新建策略
+                </button>
+            </div>
+
+            <!-- 搜索和筛选 -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">搜索策略</label>
+                        <div class="relative">
+                            <input type="text" placeholder="输入关键词..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">类型筛选</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            <option value="">全部类型</option>
+                            <option value="long_term">长期投资</option>
+                            <option value="short_term">短期交易</option>
+                            <option value="day_trading">日内交易</option>
+                            <option value="swing_trading">波段交易</option>
+                            <option value="value_investing">价值投资</option>
+                            <option value="growth_investing">成长投资</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">收益率</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            <option value="">全部收益率</option>
+                            <option value="positive">正收益</option>
+                            <option value="negative">负收益</option>
+                            <option value="high">高收益(>20%)</option>
+                            <option value="medium">中等收益(5%-20%)</option>
+                            <option value="low">低收益(<5%)</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg">
+                            <i class="fas fa-filter mr-2"></i> 筛选
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 策略列表 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- 策略卡片 1 -->
+                <div class="bg-white rounded-lg shadow strategy-card transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">价值投资策略</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">长期投资</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">基于企业基本面分析的价值投资策略，重点关注财务状况良好、行业地位突出、具有持续竞争优势的企业。</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-4"><i class="fas fa-coins mr-1 text-yellow-500"></i> 年化收益: <span class="text-green-500 font-medium">18.5%</span></span>
+                            <span><i class="fas fa-bolt mr-1 text-blue-500"></i> 风险等级: <span class="text-yellow-500 font-medium">中等</span></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mr-2">运行中</span>
+                                <span class="text-xs text-gray-500">创建于 2023-05-15</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-gray-500 hover:text-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 策略卡片 2 -->
+                <div class="bg-white rounded-lg shadow strategy-card transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">趋势跟踪策略</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">短期交易</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">基于技术分析的趋势跟踪策略，通过识别市场趋势方向进行顺势交易，适用于波动性较大的市场环境。</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-4"><i class="fas fa-coins mr-1 text-yellow-500"></i> 年化收益: <span class="text-green-500 font-medium">22.3%</span></span>
+                            <span><i class="fas fa-bolt mr-1 text-blue-500"></i> 风险等级: <span class="text-red-500 font-medium">较高</span></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mr-2">运行中</span>
+                                <span class="text-xs text-gray-500">创建于 2024-02-10</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-gray-500 hover:text-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 策略卡片 3 -->
+                <div class="bg-white rounded-lg shadow strategy-card transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">网格交易策略</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">日内交易</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">在设定价格区间内进行高抛低吸的网格交易策略，适用于震荡市场，通过分批建仓降低持仓成本。</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-4"><i class="fas fa-coins mr-1 text-yellow-500"></i> 年化收益: <span class="text-red-500 font-medium">-2.1%</span></span>
+                            <span><i class="fas fa-bolt mr-1 text-blue-500"></i> 风险等级: <span class="text-yellow-500 font-medium">中等</span></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded mr-2">暂停</span>
+                                <span class="text-xs text-gray-500">创建于 2024-08-22</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-gray-500 hover:text-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 策略卡片 4 -->
+                <div class="bg-white rounded-lg shadow strategy-card transition-all duration-300 cursor-pointer">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">定投策略</h3>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">长期投资</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">定期定额投资指数基金的策略，通过时间分散降低市场波动风险，适合长期投资和风险承受能力较低的投资者。</p>
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="mr-4"><i class="fas fa-coins mr-1 text-yellow-500"></i> 年化收益: <span class="text-green-500 font-medium">12.8%</span></span>
+                            <span><i class="fas fa-bolt mr-1 text-blue-500"></i> 风险等级: <span class="text-green-500 font-medium">较低</span></span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mr-2">运行中</span>
+                                <span class="text-xs text-gray-500">创建于 2022-01-05</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-gray-500 hover:text-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 策略统计 -->
+            <div class="mt-8 bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold text-gray-800">策略统计</h2>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="border-l-4 border-blue-500 pl-4 py-2">
+                            <p class="text-gray-500 text-sm">总策略数</p>
+                            <p class="text-2xl font-bold">12</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4 py-2">
+                            <p class="text-gray-500 text-sm">运行中</p>
+                            <p class="text-2xl font-bold">9</p>
+                        </div>
+                        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+                            <p class="text-gray-500 text-sm">暂停中</p>
+                            <p class="text-2xl font-bold">2</p>
+                        </div>
+                        <div class="border-l-4 border-red-500 pl-4 py-2">
+                            <p class="text-gray-500 text-sm">已终止</p>
+                            <p class="text-2xl font-bold">1</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <canvas id="strategyChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script>
+        function loadPage(page) {
+            parent.loadPage(page);
+        }
+
+        // 简单的图表模拟（实际项目中可以使用Chart.js等库）
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartContainer = document.getElementById('strategyChart');
+            if (chartContainer) {
+                chartContainer.innerHTML = `
+                    <div class="flex items-end h-24 space-x-2 mt-4">
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 70%"></div>
+                            <span class="text-xs mt-1">价值投资</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="w-full bg-green-500 rounded-t" style="height: 85%"></div>
+                            <span class="text-xs mt-1">趋势跟踪</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="w-full bg-yellow-500 rounded-t" style="height: 30%"></div>
+                            <span class="text-xs mt-1">网格交易</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="w-full bg-purple-500 rounded-t" style="height: 60%"></div>
+                            <span class="text-xs mt-1">定投策略</span>
+                        </div>
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="w-full bg-pink-500 rounded-t" style="height: 45%"></div>
+                            <span class="text-xs mt-1">其他策略</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                        <span>0%</span>
+                        <span>25%</span>
+                        <span>50%</span>
+                        <span>75%</span>
+                        <span>100%</span>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

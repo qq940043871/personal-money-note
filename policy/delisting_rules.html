@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统 - 退市规则</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .rule-card {
+            transition: all 0.3s ease;
+        }
+        .rule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .rule-section {
+            scroll-margin-top: 80px;
+        }
+        .market-board {
+            border-left: 4px solid;
+        }
+        .sh-main { border-color: #3B82F6; }
+        .sz-main { border-color: #10B981; }
+        .gem { border-color: #F59E0B; }
+        .star { border-color: #8B5CF6; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-800 flex items-center">
+                <i class="fas fa-exclamation-triangle text-danger mr-3"></i>
+                退市规则
+            </h1>
+            <p class="text-gray-600">了解股票退市的相关规定和流程，帮助投资者识别潜在风险</p>
+        </div>
+
+        <!-- 目录导航 -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-3">目录</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <a href="#market-overview" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-exchange-alt mr-2"></i>
+                    各市场板块概述
+                </a>
+                <a href="#financial-delisting" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-calculator mr-2"></i>
+                    财务类退市
+                </a>
+                <a href="#trading-delisting" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    交易类退市
+                </a>
+                <a href="#regulatory-delisting" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-gavel mr-2"></i>
+                    规范类退市
+                </a>
+                <a href="#major-violation" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    重大违法退市
+                </a>
+                <a href="#delisting-process" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-tasks mr-2"></i>
+                    退市流程
+                </a>
+                <a href="#investor-protection" class="text-primary hover:underline flex items-center">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    投资者保护
+                </a>
+            </div>
+        </div>
+
+        <!-- 各市场板块概述 -->
+        <div id="market-overview" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-exchange-alt text-primary mr-3"></i>
+                各市场板块概述
+            </h2>
+            <div class="space-y-4">
+                <div class="rule-card bg-blue-50 p-4 rounded-lg market-board sh-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-tree mr-2 text-blue-500"></i>
+                        沪市主板 (上海证券交易所)
+                    </h3>
+                    <p class="text-gray-600 mt-2">以蓝筹股为主，主要服务于成熟的大型企业，退市标准相对严格。</p>
+                </div>
+                <div class="rule-card bg-green-50 p-4 rounded-lg market-board sz-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-seedling mr-2 text-green-500"></i>
+                        深市主板 (深圳证券交易所)
+                    </h3>
+                    <p class="text-gray-600 mt-2">与沪市主板类似，主要服务于成熟的大型企业，退市标准相对严格。</p>
+                </div>
+                <div class="rule-card bg-yellow-50 p-4 rounded-lg market-board gem">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-gem mr-2 text-yellow-500"></i>
+                        创业板 (深圳证券交易所)
+                    </h3>
+                    <p class="text-gray-600 mt-2">主要服务于成长型创新创业企业，退市标准相对宽松，更注重企业的成长性。</p>
+                </div>
+                <div class="rule-card bg-purple-50 p-4 rounded-lg market-board star">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-star mr-2 text-purple-500"></i>
+                        科创板 (上海证券交易所)
+                    </h3>
+                    <p class="text-gray-600 mt-2">主要服务于科技创新型企业，采用注册制，退市标准更加市场化。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 财务类退市 -->
+        <div id="financial-delisting" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-calculator text-warning mr-3"></i>
+                财务类退市指标
+            </h2>
+            <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg market-board sh-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-tree mr-2 text-blue-500"></i>
+                        沪市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>净利润+营业收入:</strong> 最近一个会计年度经审计的净利润为负值且营业收入低于1亿元人民币</p>
+                        <p class="text-gray-600"><strong>净资产:</strong> 最近一个会计年度经审计的期末净资产为负值</p>
+                        <p class="text-gray-600"><strong>审计意见:</strong> 最近一个会计年度的财务会计报告被出具无法表示意见或否定意见的审计报告</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg market-board sz-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-seedling mr-2 text-green-500"></i>
+                        深市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>净利润+营业收入:</strong> 最近一个会计年度经审计的净利润为负值且营业收入低于1亿元人民币</p>
+                        <p class="text-gray-600"><strong>净资产:</strong> 最近一个会计年度经审计的期末净资产为负值</p>
+                        <p class="text-gray-600"><strong>审计意见:</strong> 最近一个会计年度的财务会计报告被出具无法表示意见或否定意见的审计报告</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg market-board gem">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-gem mr-2 text-yellow-500"></i>
+                        创业板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>净利润+营业收入:</strong> 最近一个会计年度经审计的净利润为负值且营业收入低于1亿元人民币</p>
+                        <p class="text-gray-600"><strong>净资产:</strong> 最近一个会计年度经审计的期末净资产为负值</p>
+                        <p class="text-gray-600"><strong>审计意见:</strong> 最近一个会计年度的财务会计报告被出具无法表示意见或否定意见的审计报告</p>
+                        <p class="text-gray-600"><strong>其他:</strong> 最近三十六个月累计受到深交所三次公开谴责</p>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg market-board star">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-star mr-2 text-purple-500"></i>
+                        科创板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>净利润+营业收入:</strong> 最近一个会计年度经审计的净利润为负值且营业收入低于1亿元人民币</p>
+                        <p class="text-gray-600"><strong>净资产:</strong> 最近一个会计年度经审计的期末净资产为负值</p>
+                        <p class="text-gray-600"><strong>审计意见:</strong> 最近一个会计年度的财务会计报告被出具无法表示意见或否定意见的审计报告</p>
+                        <p class="text-gray-600"><strong>研发投入:</strong> 最近三年研发投入占营业收入比例均低于5%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 交易类退市 -->
+        <div id="trading-delisting" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-chart-line text-warning mr-3"></i>
+                交易类退市指标
+            </h2>
+            <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg market-board sh-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-tree mr-2 text-blue-500"></i>
+                        沪市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>股价:</strong> 连续20个交易日收盘价低于股票面值（1元）</p>
+                        <p class="text-gray-600"><strong>市值:</strong> 连续20个交易日股票总市值低于人民币3亿元</p>
+                        <p class="text-gray-600"><strong>股东人数:</strong> 连续20个交易日股东人数均低于2000人</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg market-board sz-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-seedling mr-2 text-green-500"></i>
+                        深市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>股价:</strong> 连续20个交易日收盘价低于股票面值（1元）</p>
+                        <p class="text-gray-600"><strong>市值:</strong> 连续20个交易日股票总市值低于人民币3亿元</p>
+                        <p class="text-gray-600"><strong>股东人数:</strong> 连续20个交易日股东人数均低于2000人</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg market-board gem">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-gem mr-2 text-yellow-500"></i>
+                        创业板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>股价:</strong> 连续20个交易日收盘价低于股票面值（1元）</p>
+                        <p class="text-gray-600"><strong>市值:</strong> 连续20个交易日股票总市值低于人民币3亿元</p>
+                        <p class="text-gray-600"><strong>股东人数:</strong> 连续20个交易日股东人数均低于400人</p>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg market-board star">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-star mr-2 text-purple-500"></i>
+                        科创板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>股价:</strong> 连续20个交易日收盘价低于股票面值（1元）</p>
+                        <p class="text-gray-600"><strong>市值:</strong> 连续20个交易日股票总市值低于人民币3亿元</p>
+                        <p class="text-gray-600"><strong>股东人数:</strong> 连续20个交易日股东人数均低于400人</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 规范类退市 -->
+        <div id="regulatory-delisting" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-gavel text-warning mr-3"></i>
+                规范类退市指标
+            </h2>
+            <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg market-board sh-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-tree mr-2 text-blue-500"></i>
+                        沪市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>信息披露:</strong> 未在规定期限内披露年度报告或者中期报告，且在公司股票停牌2个月内仍未披露</p>
+                        <p class="text-gray-600"><strong>规范运作:</strong> 公司存在重大违法行为或严重扰乱市场秩序的情形</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg market-board sz-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-seedling mr-2 text-green-500"></i>
+                        深市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>信息披露:</strong> 未在规定期限内披露年度报告或者中期报告，且在公司股票停牌2个月内仍未披露</p>
+                        <p class="text-gray-600"><strong>规范运作:</strong> 公司存在重大违法行为或严重扰乱市场秩序的情形</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg market-board gem">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-gem mr-2 text-yellow-500"></i>
+                        创业板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>信息披露:</strong> 未在规定期限内披露年度报告或者中期报告，且在公司股票停牌2个月内仍未披露</p>
+                        <p class="text-gray-600"><strong>规范运作:</strong> 公司存在重大违法行为或严重扰乱市场秩序的情形</p>
+                        <p class="text-gray-600"><strong>其他:</strong> 公司可能被依法强制解散</p>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg market-board star">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-star mr-2 text-purple-500"></i>
+                        科创板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>信息披露:</strong> 未在规定期限内披露年度报告或者中期报告，且在公司股票停牌2个月内仍未披露</p>
+                        <p class="text-gray-600"><strong>规范运作:</strong> 公司存在重大违法行为或严重扰乱市场秩序的情形</p>
+                        <p class="text-gray-600"><strong>研发投入:</strong> 最近3年累计研发投入占最近3年累计营业收入比例未达到15%，且最近3年累计营业收入低于10亿元</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重大违法退市 -->
+        <div id="major-violation" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-exclamation-circle text-danger mr-3"></i>
+                重大违法类退市指标
+            </h2>
+            <div class="space-y-6">
+                <div class="bg-blue-50 p-4 rounded-lg market-board sh-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-tree mr-2 text-blue-500"></i>
+                        沪市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>欺诈发行:</strong> 公司首次公开发行股票申请或者披露文件存在虚假记载、误导性陈述或重大遗漏</p>
+                        <p class="text-gray-600"><strong>重大信息披露违法:</strong> 公司披露的年度报告或者中期报告存在虚假记载、误导性陈述或者重大遗漏，导致连续两年财务指标实际已触及财务类退市标准</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg market-board sz-main">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-seedling mr-2 text-green-500"></i>
+                        深市主板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>欺诈发行:</strong> 公司首次公开发行股票申请或者披露文件存在虚假记载、误导性陈述或重大遗漏</p>
+                        <p class="text-gray-600"><strong>重大信息披露违法:</strong> 公司披露的年度报告或者中期报告存在虚假记载、误导性陈述或者重大遗漏，导致连续两年财务指标实际已触及财务类退市标准</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg market-board gem">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-gem mr-2 text-yellow-500"></i>
+                        创业板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>欺诈发行:</strong> 公司首次公开发行股票申请或者披露文件存在虚假记载、误导性陈述或重大遗漏</p>
+                        <p class="text-gray-600"><strong>重大信息披露违法:</strong> 公司披露的年度报告或者中期报告存在虚假记载、误导性陈述或者重大遗漏，导致连续两年财务指标实际已触及财务类退市标准</p>
+                        <p class="text-gray-600"><strong>其他重大违法:</strong> 公司存在涉及国家安全、公共安全、生态安全、生产安全和公众健康安全等领域的违法行为，情节恶劣，严重损害国家利益、社会公共利益，或者严重影响上市地位</p>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg market-board star">
+                    <h3 class="font-semibold text-gray-800 flex items-center">
+                        <i class="fas fa-star mr-2 text-purple-500"></i>
+                        科创板
+                    </h3>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-gray-600"><strong>欺诈发行:</strong> 公司首次公开发行股票申请或者披露文件存在虚假记载、误导性陈述或重大遗漏</p>
+                        <p class="text-gray-600"><strong>重大信息披露违法:</strong> 公司披露的年度报告或者中期报告存在虚假记载、误导性陈述或者重大遗漏，导致连续两年财务指标实际已触及财务类退市标准</p>
+                        <p class="text-gray-600"><strong>其他重大违法:</strong> 公司存在涉及国家安全、公共安全、生态安全、生产安全和公众健康安全等领域的违法行为，情节恶劣，严重损害国家利益、社会公共利益，或者严重影响上市地位</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 退市流程 -->
+        <div id="delisting-process" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-tasks text-primary mr-3"></i>
+                退市流程
+            </h2>
+            <div class="space-y-4">
+                <div class="rule-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">退市风险警示</h3>
+                    <p class="text-gray-600 mt-2">当公司触及退市风险警示情形时，交易所将对公司股票实施退市风险警示，股票简称前冠以"*ST"字样。</p>
+                </div>
+                <div class="rule-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">暂停上市</h3>
+                    <p class="text-gray-600 mt-2">公司股票被实施退市风险警示后，若下一个会计年度仍未满足撤销退市风险警示的条件，则交易所将决定暂停其股票上市交易。</p>
+                </div>
+                <div class="rule-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">终止上市</h3>
+                    <p class="text-gray-600 mt-2">暂停上市后，若公司仍未满足恢复上市条件，交易所将决定终止其股票上市交易。</p>
+                </div>
+                <div class="rule-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">退市整理期</h3>
+                    <p class="text-gray-600 mt-2">股票进入退市整理期交易，交易期限为15个交易日，期间股票价格涨跌幅限制为10%。</p>
+                </div>
+                <div class="rule-card bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                    <h3 class="font-semibold text-gray-800">摘牌</h3>
+                    <p class="text-gray-600 mt-2">退市整理期结束后，股票被摘牌，终止在交易所的上市交易。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 投资者保护 -->
+        <div id="investor-protection" class="rule-section bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-shield-alt text-accent mr-3"></i>
+                投资者保护措施
+            </h2>
+            <div class="space-y-4">
+                <div class="rule-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">风险提示</h3>
+                    <p class="text-gray-600 mt-2">投资者应密切关注被实施退市风险警示的公司公告，及时了解公司最新情况。</p>
+                </div>
+                <div class="rule-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">及时止损</h3>
+                    <p class="text-gray-600 mt-2">对于存在退市风险的股票，投资者应合理评估风险，适时调整投资策略。</p>
+                </div>
+                <div class="rule-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">维权途径</h3>
+                    <p class="text-gray-600 mt-2">投资者因公司欺诈发行、重大信息披露违法等行为遭受损失的，可依法提起民事赔偿诉讼。</p>
+                </div>
+                <div class="rule-card bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                    <h3 class="font-semibold text-gray-800">重新上市</h3>
+                    <p class="text-gray-600 mt-2">主动退市公司符合条件的，可以申请重新上市；强制退市公司符合条件的，也可以申请重新上市。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
