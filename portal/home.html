@@ -3,321 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投资交易系统 - 首页</title>
+    <title>投资工作台</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3B82F6',
-                        secondary: '#64748B',
-                        accent: '#10B981',
-                        warning: '#F59E0B',
-                        danger: '#EF4444'
+                        brand: { 50:'#EEF2FF',500:'#6366F1',600:'#4F46E5',700:'#4338CA' },
+                        up: '#DC2626', down: '#10B981', surface: '#F8FAFC'
                     }
                 }
             }
         }
     </script>
     <style>
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        body { background: #F8FAFC; }
+        .card { background: #fff; border: 1px solid #E2E8F0; border-radius: 10px; }
+        .card-header { padding: 14px 18px; border-bottom: 1px solid #F1F5F9; display: flex; align-items: center; justify-content: space-between; }
+        .card-header h3 { font-size: 13px; font-weight: 600; color: #334155; }
+        .card-body { padding: 16px 18px; }
+        .stat-value { font-size: 22px; font-weight: 700; color: #0F172A; line-height: 1; }
+        .stat-label { font-size: 11px; color: #94A3B8; margin-top: 4px; }
+
+        .quick-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            padding: 16px 10px; border-radius: 10px; cursor: pointer;
+            transition: all 0.2s; text-decoration: none;
+            border: 1px solid #E2E8F0; background: #fff;
         }
-        .market-up {
-            color: #10B981;
+        .quick-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); border-color: #CBD5E1; }
+        .quick-btn .icon-circle {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 16px;
         }
-        .market-down {
-            color: #EF4444;
-        }
+        .quick-btn .label { font-size: 12px; color: #475569; font-weight: 500; }
+
+        .check-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; cursor: pointer; }
+        .check-item input[type=checkbox] { width: 16px; height: 16px; accent-color: #6366F1; cursor: pointer; }
+        .check-item span { font-size: 13px; color: #334155; }
+        .check-item input:checked + span { text-decoration: line-through; color: #94A3B8; }
+
+        .tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+        .tag-urgent { background: #FEF2F2; color: #DC2626; }
+        .tag-normal { background: #EEF2FF; color: #4F46E5; }
+        .tag-info { background: #F0FDF4; color: #10B981; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 顶部导航栏 -->
-    <!-- 主内容区域 -->
-    <main class="flex-1 p-6">
-            <div class="mb-6">
-                <h1 class="text-2xl font-bold text-gray-800">投资门户</h1>
-                <p class="text-gray-600">欢迎回来，这里是您的投资管理中心</p>
+<body>
+<main class="p-5 max-w-[1280px] mx-auto">
+
+    <!-- 问候行 -->
+    <div class="flex items-center justify-between mb-5">
+        <div>
+            <h1 class="text-xl font-bold text-slate-800" id="greetingText">投资工作台</h1>
+            <p class="text-xs text-slate-400 mt-0.5" id="dateDisplay"></p>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full" id="marketStatus">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 交易时段
+            </span>
+        </div>
+    </div>
+
+    <!-- 第一行：四大指数 + 迷你走势 -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+        <div class="card card-body">
+            <div class="flex justify-between items-start mb-2">
+                <div>
+                    <p class="text-xs text-slate-400">上证指数</p>
+                    <p class="stat-value">3,250<span class="text-sm font-normal text-slate-400">.12</span></p>
+                </div>
+                <span class="text-sm font-semibold text-up">+1.25%</span>
             </div>
-
-            <!-- 数据概览卡片 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                <div class="bg-white rounded-lg shadow p-6 card-hover transition-all duration-300">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-blue-100 text-primary">
-                            <i class="fas fa-wallet text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-gray-500 text-sm">总资产</p>
-                            <p class="text-2xl font-bold">¥1,250,000</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 2.5% 本月</span>
-                    </div>
+            <div style="height:50px"><canvas id="chartSSE"></canvas></div>
+        </div>
+        <div class="card card-body">
+            <div class="flex justify-between items-start mb-2">
+                <div>
+                    <p class="text-xs text-slate-400">深证成指</p>
+                    <p class="stat-value">10,890<span class="text-sm font-normal text-slate-400">.45</span></p>
                 </div>
-
-                <div class="bg-white rounded-lg shadow p-6 card-hover transition-all duration-300">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-green-100 text-accent">
-                            <i class="fas fa-chart-line text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-gray-500 text-sm">今日收益</p>
-                            <p class="text-2xl font-bold">¥12,500</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 1.2% 今日</span>
-                    </div>
+                <span class="text-sm font-semibold text-up">+0.85%</span>
+            </div>
+            <div style="height:50px"><canvas id="chartSZ"></canvas></div>
+        </div>
+        <div class="card card-body">
+            <div class="flex justify-between items-start mb-2">
+                <div>
+                    <p class="text-xs text-slate-400">创业板指</p>
+                    <p class="stat-value">2,180<span class="text-sm font-normal text-slate-400">.33</span></p>
                 </div>
-
-                <div class="bg-white rounded-lg shadow p-6 card-hover transition-all duration-300">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-yellow-100 text-warning">
-                            <i class="fas fa-lightbulb text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-gray-500 text-sm">学习笔记</p>
-                            <p class="text-2xl font-bold">24</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-gray-500 text-sm">3个新笔记</span>
-                    </div>
+                <span class="text-sm font-semibold text-down">-0.35%</span>
+            </div>
+            <div style="height:50px"><canvas id="chartCY"></canvas></div>
+        </div>
+        <div class="card card-body">
+            <div class="flex justify-between items-start mb-2">
+                <div>
+                    <p class="text-xs text-slate-400">沪深300</p>
+                    <p class="stat-value">4,121<span class="text-sm font-normal text-slate-400">.67</span></p>
                 </div>
+                <span class="text-sm font-semibold text-up">+0.95%</span>
+            </div>
+            <div style="height:50px"><canvas id="chartHS"></canvas></div>
+        </div>
+    </div>
 
-                <div class="bg-white rounded-lg shadow p-6 card-hover transition-all duration-300">
-                    <div class="flex items-center">
-                        <div class="p-3 rounded-full bg-red-100 text-danger">
-                            <i class="fas fa-landmark text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-gray-500 text-sm">政策更新</p>
-                            <p class="text-2xl font-bold">5</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <span class="text-gray-500 text-sm">本周更新</span>
-                    </div>
+    <!-- 第二行：市场走势图 + 交易日历 -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+        <!-- 上证指数走势图 -->
+        <div class="card lg:col-span-2">
+            <div class="card-header">
+                <h3>上证指数 · 近30日走势</h3>
+                <div class="flex gap-1">
+                    <button class="text-xs px-2.5 py-1 rounded-md bg-brand-50 text-brand-600 font-medium">日K</button>
+                    <button class="text-xs px-2.5 py-1 rounded-md text-slate-400">周K</button>
+                    <button class="text-xs px-2.5 py-1 rounded-md text-slate-400">月K</button>
                 </div>
             </div>
+            <div class="card-body">
+                <div style="height:280px"><canvas id="chartMain"></canvas></div>
+            </div>
+        </div>
 
-            <!-- 市场动态和投资组合 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <!-- 市场动态 -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-semibold text-gray-800">市场动态</h2>
-                    </div>
-                    <div class="p-6">
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div>
-                                    <p class="font-medium">上证指数</p>
-                                    <p class="text-gray-500 text-sm">000001.SS</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">3,250.12</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 1.25%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div>
-                                    <p class="font-medium">深证成指</p>
-                                    <p class="text-gray-500 text-sm">399001.SZ</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">10,890.45</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 0.85%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div>
-                                    <p class="font-medium">创业板指</p>
-                                    <p class="text-gray-500 text-sm">399006.SZ</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">2,180.33</p>
-                                    <p class="text-red-500 text-sm"><i class="fas fa-arrow-down"></i> 0.35%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="font-medium">沪深300</p>
-                                    <p class="text-gray-500 text-sm">000300.SS</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">4,120.67</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 0.95%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- 交易日历 -->
+        <div class="card">
+            <div class="card-header">
+                <h3>8月交易日历</h3>
+                <span class="text-xs text-slate-400" id="calMonth"></span>
+            </div>
+            <div class="card-body p-3">
+                <div class="grid grid-cols-7 gap-0.5 text-center text-xs mb-2">
+                    <span class="text-slate-300 py-1">一</span><span class="text-slate-300 py-1">二</span><span class="text-slate-300 py-1">三</span><span class="text-slate-300 py-1">四</span><span class="text-slate-300 py-1">五</span><span class="text-slate-300 py-1">六</span><span class="text-slate-300 py-1">日</span>
                 </div>
-
-                <!-- 投资组合概览 -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-semibold text-gray-800">投资组合概览</h2>
+                <div class="grid grid-cols-7 gap-0.5 text-center" id="calendarGrid"></div>
+                <div class="mt-4 space-y-2" id="calendarEvents">
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                        <span class="text-slate-600">8/7 CPI数据公布</span>
                     </div>
-                    <div class="p-6">
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div class="flex items-center">
-                                    <div class="bg-blue-100 p-2 rounded-lg mr-3">
-                                        <i class="fas fa-coins text-blue-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium">贵州茅台</p>
-                                        <p class="text-gray-500 text-sm">600519.SS</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">¥1,780.50</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 2.3%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div class="flex items-center">
-                                    <div class="bg-green-100 p-2 rounded-lg mr-3">
-                                        <i class="fas fa-microchip text-green-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium">宁德时代</p>
-                                        <p class="text-gray-500 text-sm">300750.SZ</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">¥235.80</p>
-                                    <p class="text-red-500 text-sm"><i class="fas fa-arrow-down"></i> 1.2%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                                <div class="flex items-center">
-                                    <div class="bg-yellow-100 p-2 rounded-lg mr-3">
-                                        <i class="fas fa-bolt text-yellow-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium">隆基绿能</p>
-                                        <p class="text-gray-500 text-sm">601012.SS</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">¥38.95</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 3.7%</p>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <div class="bg-purple-100 p-2 rounded-lg mr-3">
-                                        <i class="fas fa-car text-purple-500"></i>
-                                    </div>
-                                    <div>
-                                        <p class="font-medium">比亚迪</p>
-                                        <p class="text-gray-500 text-sm">002594.SZ</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium">¥325.60</p>
-                                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 1.8%</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                        <span class="text-slate-600">8/15 央行MLF操作</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                        <span class="text-slate-600">8/20 LPR报价日</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                        <span class="text-slate-600">8/31 中报披露截止</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- 学习心得和经济政策 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- 最新学习心得 -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-semibold text-gray-800">最新学习心得</h2>
-                    </div>
-                    <div class="p-6">
-                        <div class="space-y-4">
-                            <div class="border-l-4 border-blue-500 pl-4 py-1">
-                                <h3 class="font-medium">价值投资的核心理念</h3>
-                                <p class="text-gray-600 text-sm mt-1">深入理解企业基本面，关注长期价值而非短期波动...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-05</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">投资理念</span>
-                                </div>
-                            </div>
-                            <div class="border-l-4 border-green-500 pl-4 py-1">
-                                <h3 class="font-medium">技术分析中的趋势判断</h3>
-                                <p class="text-gray-600 text-sm mt-1">如何通过均线系统和成交量判断市场趋势...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-03</span>
-                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">技术分析</span>
-                                </div>
-                            </div>
-                            <div class="border-l-4 border-yellow-500 pl-4 py-1">
-                                <h3 class="font-medium">风险管理的重要性</h3>
-                                <p class="text-gray-600 text-sm mt-1">仓位控制、止损策略和资产配置的实践心得...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-01</span>
-                                    <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">风险管理</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <button class="text-primary hover:text-blue-700 font-medium">
-                                查看所有学习心得 <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
+    <!-- 第三行：四列动作区 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+
+        <!-- 快速入口 -->
+        <div class="card">
+            <div class="card-header"><h3>快速入口</h3></div>
+            <div class="card-body grid grid-cols-2 gap-2">
+                <a class="quick-btn" onclick="navTo('market/market.html','市场数据',event)">
+                    <div class="icon-circle bg-blue-50 text-blue-500"><i class="fas fa-chart-line"></i></div>
+                    <span class="label">市场数据</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('market/cognition.html','股市认知',event)">
+                    <div class="icon-circle bg-purple-50 text-purple-500"><i class="fas fa-brain"></i></div>
+                    <span class="label">股市认知</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('trading/system.html','交易系统',event)">
+                    <div class="icon-circle bg-green-50 text-green-500"><i class="fas fa-sitemap"></i></div>
+                    <span class="label">交易系统</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('trading/methods.html','交易方法',event)">
+                    <div class="icon-circle bg-teal-50 text-teal-500"><i class="fas fa-cogs"></i></div>
+                    <span class="label">交易方法</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('trading/manipulation.html','庄家与散户',event)">
+                    <div class="icon-circle bg-red-50 text-red-500"><i class="fas fa-user-secret"></i></div>
+                    <span class="label">庄家与散户</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('policy/meetings_policy.html','政策会议',event)">
+                    <div class="icon-circle bg-amber-50 text-amber-500"><i class="fas fa-landmark"></i></div>
+                    <span class="label">政策会议</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('policy/macro.html','宏观经济',event)">
+                    <div class="icon-circle bg-indigo-50 text-indigo-500"><i class="fas fa-globe-asia"></i></div>
+                    <span class="label">宏观经济</span>
+                </a>
+                <a class="quick-btn" onclick="navTo('learning/notes.html','学习心得',event)">
+                    <div class="icon-circle bg-pink-50 text-pink-500"><i class="fas fa-book-open"></i></div>
+                    <span class="label">学习心得</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 每日功课 -->
+        <div class="card">
+            <div class="card-header">
+                <h3>投资日课</h3>
+                <span class="text-xs text-slate-400" id="checkCount">0/5</span>
+            </div>
+            <div class="card-body">
+                <label class="check-item"><input type="checkbox" data-id="0"><span>查看隔夜外盘及重要新闻</span></label>
+                <label class="check-item"><input type="checkbox" data-id="1"><span>浏览四大指数及自选股行情</span></label>
+                <label class="check-item"><input type="checkbox" data-id="2"><span>检查持仓，评估是否需要调仓</span></label>
+                <label class="check-item"><input type="checkbox" data-id="3"><span>关注当日重要政策/公告/财报</span></label>
+                <label class="check-item"><input type="checkbox" data-id="4"><span>记录交易心得或学习笔记</span></label>
+            </div>
+        </div>
+
+        <!-- 风险指标 -->
+        <div class="card">
+            <div class="card-header"><h3>风险仪表</h3></div>
+            <div class="card-body space-y-4">
+                <div>
+                    <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">仓位水平</span><span class="font-semibold text-amber-500">65%</span></div>
+                    <div class="w-full bg-slate-100 rounded-full h-2"><div class="h-2 rounded-full bg-amber-400" style="width:65%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">单票集中度</span><span class="font-semibold text-up">28%</span></div>
+                    <div class="w-full bg-slate-100 rounded-full h-2"><div class="h-2 rounded-full bg-red-400" style="width:28%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">止损纪律</span><span class="font-semibold text-green-500">严格执行</span></div>
+                    <div class="w-full bg-slate-100 rounded-full h-2"><div class="h-2 rounded-full bg-green-400" style="width:100%"></div></div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">交易频率</span><span class="font-semibold text-slate-600">本月3次</span></div>
+                    <div class="w-full bg-slate-100 rounded-full h-2"><div class="h-2 rounded-full bg-blue-400" style="width:30%"></div></div>
+                </div>
+                <div class="pt-2 border-t border-slate-50">
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        <span class="text-slate-600 font-medium">风险提示：</span>单票集中度偏高，建议控制在20%以内。总仓位适中，保留35%现金应对波动。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学习 & 笔记 -->
+        <div class="card">
+            <div class="card-header">
+                <h3>最新笔记</h3>
+                <a href="#" onclick="navTo('learning/notes.html','学习心得',event)" class="text-xs text-brand-500 hover:underline">全部</a>
+            </div>
+            <div class="card-body space-y-3">
+                <div class="border-l-2 border-brand-400 pl-3">
+                    <p class="text-xs font-medium text-slate-700 mb-0.5">量价关系的实战应用</p>
+                    <p class="text-xs text-slate-400">放量突破前高往往比缩量突破更可靠...</p>
+                </div>
+                <div class="border-l-2 border-amber-400 pl-3">
+                    <p class="text-xs font-medium text-slate-700 mb-0.5">止损与市场情绪</p>
+                    <p class="text-xs text-slate-400">情绪化止损是散户亏损的首要原因...</p>
+                </div>
+                <div class="border-l-2 border-green-400 pl-3">
+                    <p class="text-xs font-medium text-slate-700 mb-0.5">庄家收割套路总结</p>
+                    <p class="text-xs text-slate-400">拉升出货的5个典型信号识别...</p>
+                </div>
+                <div class="border-l-2 border-purple-400 pl-3">
+                    <p class="text-xs font-medium text-slate-700 mb-0.5">宏观经济对A股的影响</p>
+                    <p class="text-xs text-slate-400">利率、汇率、CPI三大指标解读...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第四行：知识体系 + 政策追踪 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <!-- 知识体系 -->
+        <div class="card">
+            <div class="card-header"><h3>学习路径</h3></div>
+            <div class="card-body">
+                <div class="grid grid-cols-2 gap-3">
+                    <a onclick="navTo('trading/system.html','交易系统',event)" class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                        <i class="fas fa-compass text-blue-400"></i>
+                        <div><p class="text-xs font-medium text-slate-700">市场入门</p><p class="text-xs text-slate-400">股海导航 · 投资规划</p></div>
+                    </a>
+                    <a onclick="navTo('trading/methods.html','交易方法',event)" class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                        <i class="fas fa-sitemap text-green-400"></i>
+                        <div><p class="text-xs font-medium text-slate-700">交易实战</p><p class="text-xs text-slate-400">策略 · 量价 · 周期</p></div>
+                    </a>
+                    <a onclick="navTo('market/cognition.html','股市认知',event)" class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                        <i class="fas fa-dna text-purple-400"></i>
+                        <div><p class="text-xs font-medium text-slate-700">市场认知</p><p class="text-xs text-slate-400">底层逻辑 · 中国未来</p></div>
+                    </a>
+                    <a onclick="navTo('trading/manipulation.html','庄家与散户',event)" class="flex items-center gap-3 p-3 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                        <i class="fas fa-heart text-rose-400"></i>
+                        <div><p class="text-xs font-medium text-slate-700">心态修炼</p><p class="text-xs text-slate-400">庄家收割 · 心理建设</p></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 政策追踪 -->
+        <div class="card">
+            <div class="card-header">
+                <h3>政策要闻</h3>
+                <span class="tag tag-normal">本周更新</span>
+            </div>
+            <div class="card-body space-y-3">
+                <div class="flex items-start gap-3 pb-3 border-b border-slate-50">
+                    <span class="tag tag-urgent mt-0.5 shrink-0">新政</span>
+                    <div>
+                        <p class="text-xs font-medium text-slate-700">资本市场改革新举措</p>
+                        <p class="text-xs text-slate-400 mt-0.5">优化IPO和再融资机制，提升市场效率...</p>
                     </div>
                 </div>
-
-                <!-- 最新经济政策 -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-lg font-semibold text-gray-800">最新经济政策</h2>
+                <div class="flex items-start gap-3 pb-3 border-b border-slate-50">
+                    <span class="tag tag-info mt-0.5 shrink-0">经济</span>
+                    <div>
+                        <p class="text-xs font-medium text-slate-700">下半年经济回升举措</p>
+                        <p class="text-xs text-slate-400 mt-0.5">消费提振、投资拉动、出口支持政策...</p>
                     </div>
-                    <div class="p-6">
-                        <div class="space-y-4">
-                            <div class="border-l-4 border-purple-500 pl-4 py-1">
-                                <h3 class="font-medium">关于促进资本市场高质量发展的若干意见</h3>
-                                <p class="text-gray-600 text-sm mt-1">证监会发布新一轮资本市场改革措施，旨在提升市场活力...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-06</span>
-                                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">资本市场</span>
-                                </div>
-                            </div>
-                            <div class="border-l-4 border-red-500 pl-4 py-1">
-                                <h3 class="font-medium">关于推动经济持续回升向好的政策举措</h3>
-                                <p class="text-gray-600 text-sm mt-1">国务院常务会议确定进一步推动经济回升的政策措施...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-04</span>
-                                    <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">宏观经济</span>
-                                </div>
-                            </div>
-                            <div class="border-l-4 border-indigo-500 pl-4 py-1">
-                                <h3 class="font-medium">关于加强金融监管防范系统性风险的通知</h3>
-                                <p class="text-gray-600 text-sm mt-1">央行和银保监会联合发布加强金融监管的新规...</p>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-gray-500 text-xs">2025-11-02</span>
-                                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">金融监管</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <button class="text-primary hover:text-blue-700 font-medium">
-                                查看所有政策信息 <i class="fas fa-arrow-right ml-1"></i>
-                            </button>
-                        </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="tag tag-info mt-0.5 shrink-0">监管</span>
+                    <div>
+                        <p class="text-xs font-medium text-slate-700">金融监管新规解读</p>
+                        <p class="text-xs text-slate-400 mt-0.5">全面加强金融监管，防范系统性风险...</p>
                     </div>
                 </div>
             </div>
-        </main>
-    <script>
-        function loadPage(page) {
-            parent.loadPage(page);
+        </div>
+    </div>
+
+</main>
+
+<script>
+// === 导航 ===
+function navTo(page, title, evt) {
+    if (evt) evt.preventDefault();
+    if (window.parent && window.parent.loadPage) { window.parent.loadPage(page, title, evt); }
+}
+
+// === 日期 & 问候 ===
+(function(){
+    var n = new Date();
+    var ds = ['日','一','二','三','四','五','六'];
+    document.getElementById('dateDisplay').textContent = n.getFullYear()+'年'+(n.getMonth()+1)+'月'+n.getDate()+'日 周'+ds[n.getDay()];
+
+    var h = n.getHours(), g;
+    if (h < 9) { g = '早上好'; document.getElementById('marketStatus').innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 盘前准备'; }
+    else if (h < 11.5) { g = '上午好'; document.getElementById('marketStatus').innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 交易时段'; }
+    else if (h < 15) { g = '下午好'; document.getElementById('marketStatus').innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 交易时段'; }
+    else if (h < 18) { g = '收盘了'; document.getElementById('marketStatus').innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 复盘时间'; }
+    else { g = '晚上好'; document.getElementById('marketStatus').innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> 学习时间'; }
+    document.getElementById('greetingText').textContent = g + '，投资工作台';
+})();
+
+// === 日历渲染 ===
+(function(){
+    var n = new Date();
+    document.getElementById('calMonth').textContent = n.getFullYear()+'年'+(n.getMonth()+1)+'月';
+    var y = n.getFullYear(), m = n.getMonth();
+    var first = new Date(y,m,1).getDay(); first = first===0 ? 6 : first-1;
+    var days = new Date(y,m+1,0).getDate();
+    var today = n.getDate();
+    var html = '';
+    for (var i=0; i<first; i++) html += '<span></span>';
+    for (var d=1; d<=days; d++) {
+        var cls = 'py-1 text-xs rounded ';
+        if (d===today) cls += 'bg-brand-500 text-white font-bold ';
+        else if (d%7===5||d%7===6) cls += 'text-slate-300 ';
+        else cls += 'text-slate-600 ';
+        html += '<span class="'+cls+'">'+d+'</span>';
+    }
+    document.getElementById('calendarGrid').innerHTML = html;
+})();
+
+// === 日课 checkbox ===
+(function(){
+    var cbs = document.querySelectorAll('.check-item input');
+    var count = 0;
+    cbs.forEach(function(cb, i){
+        var k = 'daily_'+i;
+        cb.checked = localStorage.getItem(k)==='true';
+        if (cb.checked) count++;
+        cb.addEventListener('change', function(){
+            localStorage.setItem(k, cb.checked);
+            var c = 0;
+            cbs.forEach(function(x){ if (x.checked) c++; });
+            document.getElementById('checkCount').textContent = c+'/'+cbs.length;
+        });
+    });
+    document.getElementById('checkCount').textContent = count+'/'+cbs.length;
+})();
+
+// === Chart.js 迷你走势图 ===
+function miniChart(canvasId, data, color) {
+    var ctx = document.getElementById(canvasId).getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(function(_,i){ return ''; }),
+            datasets: [{ data: data, borderColor: color, borderWidth: 1.5, fill: false, pointRadius: 0, tension: 0.3 }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+            scales: { x: { display: false }, y: { display: false } }
         }
-    </script>
+    });
+}
+
+// 生成模拟走势
+function genData(len, start, range) {
+    var d = [start], v = start;
+    for (var i=1; i<len; i++) { v += (Math.random()-0.48)*range; d.push(Math.round(v*100)/100); }
+    return d;
+}
+
+miniChart('chartSSE', genData(20, 3200, 15), '#DC2626');
+miniChart('chartSZ',  genData(20, 10800, 50), '#DC2626');
+miniChart('chartCY',  genData(20, 2190, 12), '#10B981');
+miniChart('chartHS',  genData(20, 4080, 25), '#DC2626');
+
+// === 主走势图 ===
+(function(){
+    var ctx = document.getElementById('chartMain').getContext('2d');
+    var data = genData(30, 3180, 20);
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(function(_,i){ return (i+1)+'日'; }),
+            datasets: [{
+                data: data, borderColor: '#6366F1', backgroundColor: 'rgba(99,102,241,0.06)',
+                borderWidth: 2, fill: true, pointRadius: 0, pointHoverRadius: 4,
+                pointHoverBackgroundColor: '#6366F1', tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { intersect: false, mode: 'index' },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1E293B', titleColor: '#F1F5F9', bodyColor: '#CBD5E1',
+                    titleFont: { size: 12 }, bodyFont: { size: 12 },
+                    callbacks: { label: function(c) { return '上证: '+c.parsed.y.toFixed(2); } }
+                }
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { color: '#94A3B8', font: { size: 10 }, maxTicksLimit: 10 } },
+                y: { grid: { color: '#F1F5F9' }, ticks: { color: '#94A3B8', font: { size: 10 }, callback: function(v){ return v.toFixed(0); } } }
+            }
+        }
+    });
+})();
+</script>
 </body>
 </html>

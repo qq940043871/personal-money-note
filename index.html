@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投资交易系统</title>
+    <title>投资交易工作站</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -11,251 +11,283 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3B82F6',
-                        secondary: '#64748B',
-                        accent: '#10B981'
+                        brand: { 50:'#EEF2FF',100:'#E0E7FF',200:'#C7D2FE',300:'#A5B4FC',400:'#818CF8',500:'#6366F1',600:'#4F46E5',700:'#4338CA',800:'#3730A3',900:'#312E81' },
+                        up: '#DC2626',
+                        down: '#10B981',
+                        surface: '#F8FAFC',
+                        sidebar: '#0F172A',
+                        sidebarHover: '#1E293B',
+                        sidebarActive: '#1E3A5F',
                     }
                 }
             }
         }
     </script>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        * { box-sizing: border-box; }
+        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+
+        /* 侧边栏 */
+        #sidebar {
+            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+            color: #94A3B8;
+            font-size: 13px;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
         }
-        .portal-container {
-            height: calc(100vh - 64px);
-            overflow: hidden;
+        #sidebar::-webkit-scrollbar { width: 3px; }
+        #sidebar::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+        .sidebar-brand {
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid rgba(148,163,184,0.1);
+            display: flex; align-items: center; gap: 10px;
         }
-        .nav-item:hover {
-            background-color: #EFF6FF;
+        .sidebar-brand .logo { width: 32px; height: 32px; background: linear-gradient(135deg, #6366F1, #8B5CF6); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .sidebar-brand h1 { font-size: 15px; font-weight: 700; color: #F1F5F9; letter-spacing: 0.5px; }
+        .sidebar-brand .sub { font-size: 10px; color: #475569; margin-top: 1px; }
+
+        .sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+
+        .nav-group { margin-bottom: 2px; }
+        .nav-group-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 20px 6px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: #475569; cursor: pointer;
+            transition: color 0.2s;
         }
-        .active-nav {
-            background-color: #DBEAFE;
-            border-left: 4px solid #3B82F6;
+        .nav-group-header:hover { color: #94A3B8; }
+        .nav-group-header i.fa-chevron-down { font-size: 8px; transition: transform 0.2s; }
+        .nav-group-header.collapsed i.fa-chevron-down { transform: rotate(-90deg); }
+
+        .nav-group-items { overflow: hidden; transition: max-height 0.25s ease; }
+        .nav-group-items.collapsed { max-height: 0 !important; }
+
+        .nav-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 8px 20px; margin: 1px 8px;
+            border-radius: 6px; color: #94A3B8;
+            text-decoration: none; cursor: pointer;
+            transition: all 0.15s;
         }
-        #mainFrame {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            overflow: hidden;
+        .nav-item:hover { background: rgba(99,102,241,0.08); color: #CBD5E1; }
+        .nav-item.active-nav {
+            background: rgba(99,102,241,0.15);
+            color: #A5B4FC; font-weight: 600;
+            box-shadow: inset 3px 0 0 #6366F1;
         }
+        .nav-item i { width: 16px; text-align: center; font-size: 13px; opacity: 0.6; }
+        .nav-item.active-nav i { opacity: 1; }
+        .nav-item .badge { margin-left: auto; font-size: 10px; padding: 1px 6px; border-radius: 8px; background: rgba(99,102,241,0.2); color: #A5B4FC; }
+
+        /* 顶部栏 */
+        #topbar {
+            height: 48px; background: #fff; border-bottom: 1px solid #E2E8F0;
+            display: flex; align-items: center; padding: 0 20px; flex-shrink: 0;
+        }
+        #topbar .page-title { font-size: 15px; font-weight: 600; color: #1E293B; }
+        #topbar .divider { width: 1px; height: 20px; background: #E2E8F0; margin: 0 14px; }
+        #topbar .market-ticker { display: flex; gap: 18px; font-size: 12px; }
+        #topbar .market-ticker span { white-space: nowrap; }
+        #topbar .status-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        #topbar .status-dot.live { background: #10B981; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
+
+        /* 主内容 */
+        .workspace { height: calc(100vh - 48px - 28px); overflow: hidden; }
+        #mainFrame { width: 100%; height: 100%; border: 0; background: #F8FAFC; }
+
+        /* 底部状态栏 */
+        #statusbar {
+            height: 28px; background: #fff; border-top: 1px solid #E2E8F0;
+            display: flex; align-items: center; padding: 0 10px; gap: 16px;
+            font-size: 11px; color: #94A3B8; flex-shrink: 0;
+        }
+        #statusbar .status-item { display: flex; align-items: center; gap: 4px; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 顶部导航栏 -->
-    <header class="bg-white shadow-sm h-16 flex items-center px-6">
-        <div class="flex items-center">
-            <i class="fas fa-chart-line text-primary text-2xl mr-3"></i>
-            <h1 class="text-xl font-bold text-gray-800">投资交易系统</h1>
+<body class="flex flex-col h-screen bg-surface">
+
+    <!-- 顶部栏 -->
+    <div id="topbar">
+        <span class="page-title" id="pageTitle">首页</span>
+        <span class="divider"></span>
+        <div class="market-ticker" id="tickerBar">
+            <span><span class="status-dot live"></span>上证 <b class="text-up">3,250.12</b> <small class="text-up">+1.25%</small></span>
+            <span>深证 <b>10,890</b> <small class="text-up">+0.85%</small></span>
+            <span>创业板 <b>2,180</b> <small class="text-down">-0.35%</small></span>
+            <span>沪深300 <b>4,121</b> <small class="text-up">+0.95%</small></span>
         </div>
-        <div class="ml-auto flex items-center space-x-4">
-            <button class="text-gray-600 hover:text-gray-900">
-                <i class="fas fa-bell"></i>
-            </button>
-            <div class="flex items-center">
-                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
-                    <i class="fas fa-user"></i>
-                </div>
-                <span class="text-gray-700">投资者</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:16px">
+            <span style="font-size:12px;color:#94A3B8" id="currentTime"></span>
+            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#475569">
+                <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#6366F1,#8B5CF6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px">投</div>
+                <span>投资者</span>
             </div>
         </div>
-    </header>
+    </div>
 
-    <div class="flex">
-        <!-- 侧边栏导航 -->
-        <aside class="w-64 bg-white shadow-md h-screen sticky top-16 overflow-y-auto">
-            <nav class="py-4">
-                <!-- 门户首页 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">门户首页</div>
-                <a href="#" onclick="loadPage('portal/home.html')" class="nav-item active-nav flex items-center px-4 py-3 text-gray-700">
-                    <i class="fas fa-home mr-3"></i>
-                    <span>首页门户</span>
-                </a>
-                <a href="#" onclick="loadPage('portal/portal.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-pie mr-3"></i>
-                    <span>财务门户</span>
-                </a>
+    <!-- 主工作区 -->
+    <div class="flex workspace">
+        <!-- 侧边栏 -->
+        <aside id="sidebar" class="w-52 flex-shrink-0">
+            <div class="sidebar-brand">
+                <div class="logo"><i class="fas fa-chart-line" style="font-size:14px;color:#fff"></i></div>
+                <div>
+                    <h1>交易工作站</h1>
+                    <div class="sub">14 个模块 · 化繁为简</div>
+                </div>
+            </div>
 
-                <!-- 交易系统 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">交易系统</div>
-                <a href="#" onclick="loadPage('trading/stock_navigation.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-compass mr-3"></i>
-                    <span>股海导航</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/trading_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-exchange-alt mr-3"></i>
-                    <span>交易系统</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/stock_analysis.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-line mr-3"></i>
-                    <span>个股分析</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/mainipulation_process.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-user-secret mr-3"></i>
-                    <span>庄家收割</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/stock_cycle.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-sync-alt mr-3"></i>
-                    <span>股价周期</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/volume_price.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    <span>量价关系</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/market_resonance.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-project-diagram mr-3"></i>
-                    <span>大盘共振</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/retail_mistakes/index.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-user-times mr-3"></i>
-                    <span>散户误区</span>
-                </a>
-                <a href="#" onclick="loadPage('trading/investment_plan.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-pie mr-3"></i>
-                    <span>投资规划</span>
-                </a>
+            <nav class="sidebar-nav">
+                <!-- 工作台 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>工作台</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:80px">
+                        <a class="nav-item active-nav" onclick="loadPage('portal/home.html','首页',event)">
+                            <i class="fas fa-home"></i><span>首页</span>
+                        </a>
+                    </div>
+                </div>
 
-                <!-- 学习系统 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">学习系统</div>
-                <a href="#" onclick="loadPage('learning/learning_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-graduation-cap mr-3"></i>
-                    <span>学习系统</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/learning.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-book mr-3"></i>
-                    <span>学习心得</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/biography.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-user-alt mr-3"></i>
-                    <span>名人传记</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/learning_news.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-file-alt mr-3"></i>
-                    <span>政策文件</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/psychological_construction.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-heartbeat mr-3"></i>
-                    <span>心理建设</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/scoring_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-star-half-alt mr-3"></i>
-                    <span>评分体系</span>
-                </a>
-                <a href="#" onclick="loadPage('learning/retail_psychology.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-brain mr-3"></i>
-                    <span>散户心理</span>
-                </a>
+                <!-- 行情市场 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>行情市场</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:200px">
+                        <a class="nav-item" onclick="loadPage('market/market.html','市场数据',event)"><i class="fas fa-chart-line"></i><span>市场数据</span></a>
+                        <a class="nav-item" onclick="loadPage('market/read_news.html','读懂新闻',event)"><i class="fas fa-newspaper"></i><span>读懂新闻</span></a>
+                        <a class="nav-item" onclick="loadPage('market/cognition.html','股市认知',event)"><i class="fas fa-brain"></i><span>股市认知</span><span class="badge">5</span></a>
+                    </div>
+                </div>
 
-                <!-- 市场信息 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">市场信息</div>
-                <a href="#" onclick="loadPage('market/market.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    <span>市场数据</span>
-                </a>
-                <a href="#" onclick="loadPage('market/read_news.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-newspaper mr-3"></i>
-                    <span>读懂新闻</span>
-                </a>
-                <a href="#" onclick="loadPage('market/technology_imagination.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-magic mr-3"></i>
-                    <span>技术与想象</span>
-                </a>
-                <a href="#" onclick="loadPage('market/market_essence.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-book mr-3"></i>
-                    <span>股市本质</span>
-                </a>
-                <a href="#" onclick="loadPage('market/fundamental_logic.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-brain mr-3"></i>
-                    <span>底层逻辑</span>
-                </a>
-                <a href="#" onclick="loadPage('market/china_future.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-flag mr-3"></i>
-                    <span>中国未来</span>
-                </a>
-                <a href="#" onclick="loadPage('market/first_mover_advantage.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-first-aid mr-3"></i>
-                    <span>先知螃蟹</span>
-                </a>
+                <!-- 交易体系 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>交易体系</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:300px">
+                        <a class="nav-item" onclick="loadPage('trading/system.html','交易系统',event)"><i class="fas fa-sitemap"></i><span>交易系统</span><span class="badge">3</span></a>
+                        <a class="nav-item" onclick="loadPage('trading/methods.html','交易方法',event)"><i class="fas fa-cogs"></i><span>交易方法</span><span class="badge">4</span></a>
+                        <a class="nav-item" onclick="loadPage('trading/stock_analysis.html','个股分析',event)"><i class="fas fa-microscope"></i><span>个股分析</span></a>
+                        <a class="nav-item" onclick="loadPage('trading/manipulation.html','庄家与散户',event)"><i class="fas fa-user-secret"></i><span>庄家与散户</span><span class="badge">3</span></a>
+                    </div>
+                </div>
 
-                <!-- 国家政策 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">国家政策</div>
-                <a href="#" onclick="loadPage('policy/meetings.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-users mr-3"></i>
-                    <span>重要会议</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/fed.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-dollar-sign mr-3"></i>
-                    <span>美联储利率</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/policy.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-landmark mr-3"></i>
-                    <span>经济政策</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/government_finance.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-file-invoice-dollar mr-3"></i>
-                    <span>政府财政</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/economic_development.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-history mr-3"></i>
-                    <span>中国经济</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/global_economic_development.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-globe-americas mr-3"></i>
-                    <span>世界经济</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/economic_conditions.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-chart-line mr-3"></i>
-                    <span>经济周期</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/financial_disclosure_rules.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-file-contract mr-3"></i>
-                    <span>财报披露</span>
-                </a>
-                <a href="#" onclick="loadPage('policy/delisting_rules.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-exclamation-triangle mr-3"></i>
-                    <span>退市规则</span>
-                </a>
+                <!-- 宏观政策 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>宏观政策</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:200px">
+                        <a class="nav-item" onclick="loadPage('policy/meetings_policy.html','政策会议',event)"><i class="fas fa-landmark"></i><span>政策会议</span><span class="badge">2</span></a>
+                        <a class="nav-item" onclick="loadPage('policy/macro.html','宏观经济',event)"><i class="fas fa-globe-asia"></i><span>宏观经济</span><span class="badge">5</span></a>
+                        <a class="nav-item" onclick="loadPage('policy/rules.html','市场规则',event)"><i class="fas fa-gavel"></i><span>市场规则</span><span class="badge">2</span></a>
+                    </div>
+                </div>
 
-                <!-- 行业追踪 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">行业追踪</div>
-                <a href="#" onclick="loadPage('industry/industry_tracking.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-industry mr-3"></i>
-                    <span>工业软件</span>
-                </a>
-                <a href="#" onclick="loadPage('industry/industrial_software_chain.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-link mr-3"></i>
-                    <span>产业链分析</span>
-                </a>
+                <!-- 学习成长 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>学习成长</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:200px">
+                        <a class="nav-item" onclick="loadPage('learning/notes.html','学习心得',event)"><i class="fas fa-book-open"></i><span>学习心得</span><span class="badge">5</span></a>
+                        <a class="nav-item" onclick="loadPage('industry/overview.html','行业追踪',event)"><i class="fas fa-industry"></i><span>行业追踪</span><span class="badge">3</span></a>
+                    </div>
+                </div>
 
-                <!-- 系统设置 -->
-                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">系统设置</div>
-                <a href="#" onclick="loadPage('system/settings.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
-                    <i class="fas fa-cog mr-3"></i>
-                    <span>个人设置</span>
-                </a>
+                <!-- 系统 -->
+                <div class="nav-group">
+                    <div class="nav-group-header" onclick="toggleGroup(this)">
+                        <span>系统</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="nav-group-items" style="max-height:60px">
+                        <a class="nav-item" onclick="loadPage('system/settings.html','设置',event)"><i class="fas fa-cog"></i><span>设置</span></a>
+                    </div>
+                </div>
             </nav>
         </aside>
 
-        <!-- 主内容区域 -->
-        <main class="flex-1 p-6 portal-container">
-            <iframe id="mainFrame" src="portal/home.html" class="w-full h-full border-0 rounded-lg shadow"></iframe>
+        <!-- 主内容 -->
+        <main class="flex-1 relative">
+            <iframe id="mainFrame" src="portal/home.html"></iframe>
         </main>
     </div>
 
-    <script>
-        function loadPage(page) {
-            document.getElementById('mainFrame').src = page;
+    <!-- 状态栏 -->
+    <div id="statusbar">
+        <span class="status-item"><span class="status-dot live"></span> 盘中</span>
+        <span class="status-item" id="statusTime"></span>
+        <span style="margin-left:auto">数据仅供参考 · 投资有风险</span>
+    </div>
 
-            // 更新导航激活状态
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active-nav');
-            });
-            event.currentTarget.classList.add('active-nav');
+    <script>
+        // 时间更新
+        function tick() {
+            var n = new Date();
+            var ds = ['日','一','二','三','四','五','六'];
+            var s = n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate())+' 周'+ds[n.getDay()]+' '+pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+            document.getElementById('currentTime').textContent = s;
+            document.getElementById('statusTime').textContent = s;
         }
+        function pad(v) { return (v<10?'0':'')+v; }
+        tick(); setInterval(tick, 1000);
+
+        // 页面加载
+        function loadPage(page, title, evt) {
+            document.getElementById('mainFrame').src = page;
+            document.getElementById('pageTitle').textContent = title || '';
+            document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.remove('active-nav'); });
+
+            var t = null;
+            if (evt && evt.currentTarget && evt.currentTarget.classList.contains('nav-item')) { t = evt.currentTarget; }
+            if (!t) {
+                document.querySelectorAll('.nav-item').forEach(function(el){
+                    var o = el.getAttribute('onclick')||'';
+                    if (o.indexOf("'"+page+"'")!==-1 || o.indexOf('"'+page+'"')!==-1) { t = el; }
+                });
+            }
+            if (t) {
+                t.classList.add('active-nav');
+                var gi = t.closest('.nav-group-items');
+                if (gi && gi.classList.contains('collapsed')) {
+                    gi.classList.remove('collapsed');
+                    var h = gi.previousElementSibling;
+                    if (h) h.classList.remove('collapsed');
+                }
+            }
+        }
+
+        // 折叠分组
+        function toggleGroup(h) {
+            h.classList.toggle('collapsed');
+            var n = h.nextElementSibling;
+            if (n) n.classList.toggle('collapsed');
+        }
+
+        // 初始化：只展开工作台和行情市场
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.nav-group-header').forEach(function(h){
+                var t = h.querySelector('span').textContent.trim();
+                if (t !== '工作台' && t !== '行情市场') {
+                    h.classList.add('collapsed');
+                    var n = h.nextElementSibling;
+                    if (n) n.classList.add('collapsed');
+                }
+            });
+        });
     </script>
 </body>
 </html>
