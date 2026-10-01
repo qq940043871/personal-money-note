@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资交易系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#64748B',
+                        accent: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .portal-container {
+            height: calc(100vh - 64px);
+            overflow: hidden;
+        }
+        .nav-item:hover {
+            background-color: #EFF6FF;
+        }
+        .active-nav {
+            background-color: #DBEAFE;
+            border-left: 4px solid #3B82F6;
+        }
+        #mainFrame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航栏 -->
+    <header class="bg-white shadow-sm h-16 flex items-center px-6">
+        <div class="flex items-center">
+            <i class="fas fa-chart-line text-primary text-2xl mr-3"></i>
+            <h1 class="text-xl font-bold text-gray-800">投资交易系统</h1>
+        </div>
+        <div class="ml-auto flex items-center space-x-4">
+            <button class="text-gray-600 hover:text-gray-900">
+                <i class="fas fa-bell"></i>
+            </button>
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="text-gray-700">投资者</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- 侧边栏导航 -->
+        <aside class="w-64 bg-white shadow-md h-screen sticky top-16 overflow-y-auto">
+            <nav class="py-4">
+                <!-- 门户首页 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">门户首页</div>
+                <a href="#" onclick="loadPage('portal/home.html')" class="nav-item active-nav flex items-center px-4 py-3 text-gray-700">
+                    <i class="fas fa-home mr-3"></i>
+                    <span>首页门户</span>
+                </a>
+                <a href="#" onclick="loadPage('portal/portal.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-pie mr-3"></i>
+                    <span>财务门户</span>
+                </a>
+
+                <!-- 交易系统 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">交易系统</div>
+                <a href="#" onclick="loadPage('trading/stock_navigation.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-compass mr-3"></i>
+                    <span>股海导航</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/trading_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-exchange-alt mr-3"></i>
+                    <span>交易系统</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/stock_analysis.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-line mr-3"></i>
+                    <span>个股分析</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/mainipulation_process.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-user-secret mr-3"></i>
+                    <span>庄家收割</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/stock_cycle.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-sync-alt mr-3"></i>
+                    <span>股价周期</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/volume_price.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    <span>量价关系</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/market_resonance.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-project-diagram mr-3"></i>
+                    <span>大盘共振</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/retail_mistakes/index.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-user-times mr-3"></i>
+                    <span>散户误区</span>
+                </a>
+                <a href="#" onclick="loadPage('trading/investment_plan.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-pie mr-3"></i>
+                    <span>投资规划</span>
+                </a>
+
+                <!-- 学习系统 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">学习系统</div>
+                <a href="#" onclick="loadPage('learning/learning_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-graduation-cap mr-3"></i>
+                    <span>学习系统</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/learning.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-book mr-3"></i>
+                    <span>学习心得</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/biography.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-user-alt mr-3"></i>
+                    <span>名人传记</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/learning_news.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-file-alt mr-3"></i>
+                    <span>政策文件</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/psychological_construction.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-heartbeat mr-3"></i>
+                    <span>心理建设</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/scoring_system.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-star-half-alt mr-3"></i>
+                    <span>评分体系</span>
+                </a>
+                <a href="#" onclick="loadPage('learning/retail_psychology.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-brain mr-3"></i>
+                    <span>散户心理</span>
+                </a>
+
+                <!-- 市场信息 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">市场信息</div>
+                <a href="#" onclick="loadPage('market/market.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    <span>市场数据</span>
+                </a>
+                <a href="#" onclick="loadPage('market/read_news.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-newspaper mr-3"></i>
+                    <span>读懂新闻</span>
+                </a>
+                <a href="#" onclick="loadPage('market/technology_imagination.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-magic mr-3"></i>
+                    <span>技术与想象</span>
+                </a>
+                <a href="#" onclick="loadPage('market/market_essence.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-book mr-3"></i>
+                    <span>股市本质</span>
+                </a>
+                <a href="#" onclick="loadPage('market/fundamental_logic.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-brain mr-3"></i>
+                    <span>底层逻辑</span>
+                </a>
+                <a href="#" onclick="loadPage('market/china_future.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-flag mr-3"></i>
+                    <span>中国未来</span>
+                </a>
+                <a href="#" onclick="loadPage('market/first_mover_advantage.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-first-aid mr-3"></i>
+                    <span>先知螃蟹</span>
+                </a>
+
+                <!-- 国家政策 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">国家政策</div>
+                <a href="#" onclick="loadPage('policy/meetings.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-users mr-3"></i>
+                    <span>重要会议</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/fed.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-dollar-sign mr-3"></i>
+                    <span>美联储利率</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/policy.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-landmark mr-3"></i>
+                    <span>经济政策</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/government_finance.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-file-invoice-dollar mr-3"></i>
+                    <span>政府财政</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/economic_development.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-history mr-3"></i>
+                    <span>中国经济</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/global_economic_development.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-globe-americas mr-3"></i>
+                    <span>世界经济</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/economic_conditions.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-chart-line mr-3"></i>
+                    <span>经济周期</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/financial_disclosure_rules.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-file-contract mr-3"></i>
+                    <span>财报披露</span>
+                </a>
+                <a href="#" onclick="loadPage('policy/delisting_rules.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>
+                    <span>退市规则</span>
+                </a>
+
+                <!-- 行业追踪 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">行业追踪</div>
+                <a href="#" onclick="loadPage('industry/industry_tracking.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-industry mr-3"></i>
+                    <span>工业软件</span>
+                </a>
+                <a href="#" onclick="loadPage('industry/industrial_software_chain.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-link mr-3"></i>
+                    <span>产业链分析</span>
+                </a>
+
+                <!-- 系统设置 -->
+                <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-4">系统设置</div>
+                <a href="#" onclick="loadPage('system/settings.html')" class="nav-item flex items-center px-4 py-3 text-gray-700 hover:text-primary">
+                    <i class="fas fa-cog mr-3"></i>
+                    <span>个人设置</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main class="flex-1 p-6 portal-container">
+            <iframe id="mainFrame" src="portal/home.html" class="w-full h-full border-0 rounded-lg shadow"></iframe>
+        </main>
+    </div>
+
+    <script>
+        function loadPage(page) {
+            document.getElementById('mainFrame').src = page;
+
+            // 更新导航激活状态
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active-nav');
+            });
+            event.currentTarget.classList.add('active-nav');
+        }
+    </script>
+</body>
+</html>
